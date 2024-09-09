@@ -7,6 +7,8 @@ Será una CRUD app para consola. App para administrar los gastos de un hogar y s
 - Se pueden crear, recuperar, actualizar, borrar gastos, persistiendo estos en un archivo de texto. 
 - Se puede buscar, pedir informes mensuales, por categoria, o gastos ordenados de mayor a menor. 
 - El ingreso de datos, se valida usando regex cuando sea necesario.
+- calcular totales por mes
+- calcular totales por categoria
   
 
 
