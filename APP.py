@@ -6,7 +6,7 @@ def generarMenu():
 def crearDiccionario():
     diccionario = {}
     # desarrolla pablo 
-    # leer data.csv y crear como en modelo-diccionario.json
+    # leer gastos.csv y crear como en modelo-diccionario.json
     return diccionario
 
 def mostrarGastos(mes):
