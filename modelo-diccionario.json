@@ -1,0 +1,17 @@
+{
+    "enero": {
+        "alimentación": [100, 200, 150],
+        "transporte": [50, 80],
+        "entretenimiento": [30]
+    },
+    "febrero": {
+        "alimentación": [100, 200, 150],
+        "transporte": [50, 80],
+        "entretenimiento": [30]
+    },
+    "marzo": {
+        "alimentación": [100, 200, 150],
+        "transporte": [50, 80],
+        "entretenimiento": [30]
+    }
+}
