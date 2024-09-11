@@ -1,6 +1,20 @@
 tupla = ('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre')
-matriz = []
-diccionario = {} 
+matriz = [] # como en gastos.csv
+diccionario = {} # como en modelo-diccionario.json
+
+def cargarDatos(archivo):
+    with open(archivo) as data:
+        primeraLinea = True
+        for line in data:
+            gastos = line.strip('\n').split(',')
+            if not primeraLinea:
+                gastos[1] = round(float(gastos[1]), 2) # redondea el importe
+            else:
+                primeraLinea = False
+            gastos[2] = gastos[2].strip() # elimina espacios en blanco
+            matriz.append(gastos)
+        matriz.pop(0) # elimina cabecera
+
 
 def generarMenu():
     # desarrolla joaquin
@@ -52,3 +66,11 @@ def listaDeCategorias():
     
 # CRUD Gastos
 # crear, recuperar, actualizar, borrar
+
+
+#MAIN
+
+cargarDatos('gastos.csv')
+for linea in matriz:
+    print(linea)
+
