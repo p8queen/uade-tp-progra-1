@@ -1,4 +1,4 @@
 Integrantes del TP
 
-- Gustavo 
+- Gustavo - LU 1200720
 - Joaquin Maver - LU 1030299
