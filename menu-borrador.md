@@ -5,4 +5,5 @@
 1. Ver subtotales por mes y categoria 
 1. Ver subtotales por categoria 
 1. Lista de Categorias
-
+1. Editar Gasto
+1. Borrar Gasto
