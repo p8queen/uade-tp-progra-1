@@ -1,5 +1,5 @@
 def menuMain():
-    print("""Menú de opciones:
+    print("""\nMenú de opciones:
     1. Cargar nuevo gasto
     2. Ver gastos por mes
     3. Ver gastos por mes y categoría
@@ -11,47 +11,51 @@ def menuMain():
     9. Salir""")
 
 def menuCategorias():
-    print('\nElija una opción:\n1 - Ver categorias.\n2 - Agregar una categoría nueva.\n3 - Eliminar una categoria\n4 - Volver al menú.')
-    print('Eliminar una categoría no elimina el gasto ya cargado en la misma.\nPara eso debe ir a editar el gasto.\n')
+    print("""\nElija una opción:
+          1 - Ver categorias.
+          2 - Agregar una categoría nueva.
+          3 - Eliminar una categoria
+          4 - Editar descripción de una categoría.
+          5 - Volver al menú.
+Eliminar una categoría no elimina el gasto ya cargado en la misma.\nPara eso debe ir a editar el gasto.""")
 
-def listaDeCategorias(categorias):
+def listaDeCategorias(categorias, descripcionCategorias):
     print('Categorias: \n')
     i=0
     for categoria in categorias:
         i+=1
-        print(f'{i} -', categoria)
+        print(f'{i} - {categoria} : {descripcionCategorias[categoria]}')
+
 
 # Edita la lista de categorías
-def editarListaDeCategorias(categorias):
+def editarListaDeCategorias(categorias,descripcionCategorias):
     menuCategorias()
     opcionCat=int(input('Ingrese la opción deseada: '))
-    while opcionCat!=4:
+    while opcionCat!=5:
         if opcionCat==1:
-            print('Categorias: \n')
-            for categoria in categorias:
-                print(categoria)
+            listaDeCategorias(categorias, descripcionCategorias)
             menuCategorias()
             opcionCat=int(input('Ingrese la opción deseada: '))
-
         elif opcionCat==2:
             nuevaCategoria=input('Ingrese el nombre de la nueva Categoría: ')
             categorias.append(nuevaCategoria)
+            descripcionCategorias[nuevaCategoria]=input(f'Agregar nueva descripción para la categoría {nuevaCategoria}: ')
             menuCategorias()
             opcionCat=int(input('Ingrese la opción deseada: '))
-
         elif opcionCat==3:
-            print('Categorias: \n')
-            i=0
-            for categoria in categorias:
-                i+=1
-                print(f'{i} - ',categoria)
+            listaDeCategorias(categorias, descripcionCategorias)
             eliminarCategoria=int(input('Ingrese el número de la categoría que desea eliminar de la lista: '))
             print(f'La categoría a eliminar es: {categorias[eliminarCategoria-1]}')
             categorias.pop(eliminarCategoria-1)
             menuCategorias()  
             opcionCat=int(input('Ingrese la opción deseada: '))    
-
         elif opcionCat==4:
+            listaDeCategorias(categorias, descripcionCategorias)
+            editarDescripcion=int(input('Ingrese el número de la categoría de la lista que desea editar su descripcion: ')) 
+            descripcionCategorias[categorias[editarDescripcion]]=input(f'Ingrese la descripción nueva para la categoria {categorias[editarDescripcion]}: ')
+            menuCategorias()  
+            opcionCat=int(input('Ingrese la opción deseada: '))              
+        elif opcionCat==5:
             return 0
         else:
             print('La opción ingresada no es válida.\nIngrese nuevamente.') 
@@ -127,6 +131,16 @@ categorias=['Aliminetación', 'Alquiler', 'Entretenimiento', 'Transporte', 'Estu
 listaGastos=[[1, '2024-03-23', 200.45, 'Salud'], [2, '2024-03-23', 120.00, 'Alquiler'], [3, '2024-03-23', 100.5, 'Salud'], [4, '2024-03-23', 715.55, 'Servicios']]
 # Matriz donde sumarizamos los gastos por mes
 matrizGastos={}
+#Debemos guardar las descripciones del diccionario en un archivo descripcionesCategorias. Mientras la precargo para probar.
+descripcionCategorias={
+    'Aliminetación':'Gastos relacionados a la alimentación como supermercado, almacen, verdulería.', 
+    'Alquiler':'Gastos de alquiler o renta del lugar de vivir o para automotores, depósitos, etc...', 
+    'Entretenimiento':'Gastos de diversión como por ejemplo cine, teatro, vacaciones.', 
+    'Transporte':'Viaticos relacionados a la movilidad regular del mes como son la Sube, larga distancia, tren, etc...', 
+    'Estudios':'Los gastos de estudios como son la universidad, cursos, talleres.', 
+    'Salud':'Gastos de la medicina o relacionados como son los medicamentos.',
+    'Servicios':'Los gastos fijos inherentes a la vivienda, cochera, depósito.'
+    }
 
 
 menuMain()
@@ -149,11 +163,11 @@ while opcion!=9:
         menuMain()
         opcion=int(input('Ingrese la opción deseada: '))
     elif opcion==5:
-        listaDeCategorias(categorias)
+        listaDeCategorias(categorias, descripcionCategorias)
         menuMain()
         opcion=int(input('Ingrese la opción deseada: '))
     elif opcion==6:
-        editarListaDeCategorias(categorias)
+        editarListaDeCategorias(categorias, descripcionCategorias)
         menuMain()
         opcion=int(input('Ingrese la opción deseada: '))
     elif opcion==7:
@@ -168,4 +182,7 @@ while opcion!=9:
         print(f'¡Gracias por elejirnos!\n')
     else:
         print('El valor ingresado no es un menú válido. Por favor ingrese nuevamente.')
+
+
+
 
