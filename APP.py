@@ -121,6 +121,33 @@ def editarGasto(listaGastos, matrizGastos):
             queEdita=int(input('Opción ingresada es inválida. Ingrese nuevamente: '))
     print(listaGastos)
 
+# Funcion para recuperar el Nombre del mes desde la fecha YYYY-MM-DD
+def nombreMesDesdeFechaGasto (mesAno, fechaGasto):
+    numMes=int(fechaGasto.split('-')[1])
+    nombreMes=mesAno[numMes-1]
+    return nombreMes
+
+def creaDiccionarioParaGastosMes(mesAno, categorias):
+    diccionarioGastosVacio={}
+    for mes in mesAno:
+        diccionarioGastosVacio[mes]={}
+        for categoria in categorias:
+            diccionarioGastosVacio[mes][categoria]=0
+    print (diccionarioGastosVacio)
+    return diccionarioGastosVacio
+
+
+# Sumarizo los gastos en un diccionario para poder imprimirlos luego.
+def gastosPorMes(listaGastos, mesAno):
+    resumenGastos=creaDiccionarioParaGastosMes(mesAno, categorias) #Declaro el diccionario vacio
+    # Recorro toda la lista de gastos y voy sumando al Diccionario
+    for gasto in listaGastos:
+        nombreMes=nombreMesDesdeFechaGasto(mesAno,fechaGasto=gasto[1])
+        importeGasto=gasto[2]
+        categoriaGasto=gasto[3]
+        # Sumamos el importe a la categoría correspondiente
+        resumenGastos[nombreMes][categoriaGasto] += importeGasto
+# Falta la impresión, no estoy logrando NO imprimir los ceros.
 
 # Cuerpo principal:
 
