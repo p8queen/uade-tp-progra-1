@@ -1,4 +1,4 @@
-tupla = ('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre')
+tuplaMeses = ('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre')
 matriz = [] # como en gastos.csv
 diccionario = {} # como en modelo-diccionario.json
 
