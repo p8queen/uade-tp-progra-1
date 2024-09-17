@@ -1,0 +1,23 @@
+# Tupla de los Nombres de los meses del año
+tuplaMeses=('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre')
+
+# La lista de las Categorias:
+categorias=['Comida', 'Alquiler', 'Entretenimiento', 'Transporte', 'Estudios', 'Salud','Servicios', 'Otros']
+
+# La matriz de los gastos:
+matrizGastos=[[1, '2024-03-23', 200.45, 'Salud'], [2, '2024-03-23', 120.00, 'Alquiler'], [3, '2024-03-23', 100.5, 'Salud'], [4, '2024-03-23', 715.55, 'Servicios'],[5, '2024-10-01', 731.0, 'Transporte'], [6, '2024-12-10', 419.0, 'Transporte'], [7, '2024-10-01', 1000.0, 'Otros'], [8, '2024-06-18', 962.0, 'Otros'],[9, '2024-05-05', 657.0, 'Comida'], [10, '2024-10-10', 888.0, 'Comida'], [11, '2024-03-21', 494.0, 'Comida'], [12, '2024-01-18', 643.0, 'Alquiler'],[13, '2024-07-10', 988.0, 'Comida'], [14, '2024-07-24', 616.0, 'Estudios']]
+
+# Diccionario donde iremos guardando los gastos históricos individualizados. 
+diccionarioGastos={}
+
+# Debemos guardar las descripciones del diccionario en un archivo descripcionesCategorias. Mientras la precargo para probar.
+descripcionCategorias={
+    'Comida':'Gastos relacionados a la alimentación como supermercado, almacen, verdulería.', 
+    'Alquiler':'Gastos de alquiler o renta del lugar de vivir o para automotores, depósitos, etc...', 
+    'Entretenimiento':'Gastos de diversión como por ejemplo cine, teatro, vacaciones.', 
+    'Transporte':'Viaticos relacionados a la movilidad regular del mes como son la Sube, larga distancia, tren, etc...', 
+    'Estudios':'Los gastos de estudios como son la universidad, cursos, talleres.', 
+    'Salud':'Gastos de la medicina o relacionados como son los medicamentos.',
+    'Servicios':'Los gastos fijos inherentes a la vivienda, cochera, depósito.',
+    'Otros': 'Gastos que no tienen una categoria definida y son de única vez.'
+    }
