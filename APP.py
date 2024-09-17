@@ -1,5 +1,4 @@
 def creardiccionarioGastos(tuplaMeses, matrizGastos, diccionarioGastos):
-   def crearDiccionario():
     diccionarioGastos = {}
     # Recorrer la matriz y agrupar los datos en el diccionario
     for fila in matrizGastos:
