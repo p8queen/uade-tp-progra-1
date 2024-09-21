@@ -1,1 +1,168 @@
+# Menús que se imprimen generales:
+def menuMain():
+    print("""\nMenú de opciones:
+        1. Cargar nuevo gasto.
+        2. Ver gastos.
+        3. Ver lista de categorías.
+        4. Editar lista de categorías.
+        5. Editar gasto.
+        9. Salir""")
+
+def menuCategorias():
+    print("""\nElija una opción:
+        1 - Ver categorias.
+        2 - Agregar una categoría nueva.
+        3 - Eliminar una categoria
+        4 - Editar descripción de una categoría.
+        5 - Obtener categorias en uso, es decir, que tengan gastos ingresados.
+        9 - Volver al menú anterior.
+Eliminar una categoría no elimina el gasto ya cargado en la misma.\nPara eso debe ir a editar el gasto.""")
+    
+def menuConsultarGastos():
+        print("""\nElija como ver los gastos:
+        1 - Gastos por categorias.
+        2 - Gastos por mes.
+        3 - Gastos por mes por categoría.
+        4 - Gastos por ID.
+        5 - Gastos por fecha.
+        6 - Gastos por rango de importe.
+        7 - Gastos por Categoria.
+        9 - Volver al menú anterior.\n""")
+        
+def menuEditarGastos():
+    print("""\nIngrese la opción que quiere usar:
+        1 - Eliminar gasto por ID.
+        2 - Editar gasto por ID.
+        3 - Eliminar gasto por Fecha.
+        4 - Editar gasto por Fecha.
+        9 - Volver al menú anterior.\n""")
+
+# Función menú para consultar gastos:
+def consultarGastos(matrizGastos, categorias, tuplaMeses):
+    menuConsultarGastos ()
+    opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+    while opcion!=9:
+        if opcion==1:
+            totalGastosPorCategoria(matrizGastos)
+            menuConsultarGastos ()
+            opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+        elif opcion==2:
+            totalGastosPorMes(matrizGastos)
+            menuConsultarGastos ()
+            opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+        elif opcion==3:
+            i=1
+            for mes in tuplaMeses:
+                print(f'{i} - {mes}')
+                i+=1
+            mes=int(input('Ingrese el número del mes a consultar: '))
+            mostrarGastosPorMes (matrizGastos, mes)
+            menuConsultarGastos ()
+            opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+        elif opcion==4:
+            id=int(input('Ingrese el ID que quiere buscar:'))
+            buscarGastoPorId(matrizGastos, id)
+            menuConsultarGastos ()
+            opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+        elif opcion==5:
+            fecha=input('Ingrese la fecha a buscar con el formato: YYYY-MM-DD')
+            buscarGastoPorFecha(matrizGastos, fecha)
+            menuConsultarGastos ()
+            opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+        elif opcion==6:
+            minimo=int(input('Ingrese el mínimo importe del rango:'))
+            maximo=int(input('Ingrese el máximo importe del rango:'))
+            buscarGastosPorRangoImporte(matrizGastos, minimo, maximo)
+            menuConsultarGastos ()
+            opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+        elif opcion==7:
+            buscarGastoPorCategoria(matrizGastos, categorias)
+            menuConsultarGastos ()
+            opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+        elif opcion==9:
+            return 0
+        else:
+            print('La opción ingresada no es válida.\nIngrese nuevamente.') 
+            opcion=int(input('Ingrese la opción deseada: '))
+
+# Función menú que edita/elimina gastos:
+def editarGastos(matrizGastos):
+    menuEditarGastos ()
+    opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+    while opcion!=9:
+        if opcion==1:
+            id=int(input('Ingrese el ID que quiere buscar:'))
+            eliminarGasto(matrizGastos, id)
+            menuEditarGastos ()
+            opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+        elif opcion==2:
+            editarGasto(matrizGastos,id)
+            menuEditarGastos ()
+            opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+        elif opcion==3:
+            eliminarGastoPorFecha(matrizGastos) 
+            menuEditarGastos ()
+            opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+        elif opcion==4:
+            editarGastoPorFecha(matrizGastos)
+            menuEditarGastos ()
+            opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
+        elif opcion==9:
+            return 0
+        else:
+            print('La opción ingresada no es válida.\nIngrese nuevamente.') 
+            opcion=int(input('Ingrese la opción deseada: '))            
+
+
+
+# Main. 
+# Declaramos listas, tuplas, matrices y diccionarios que se usan en el programa.
+# Tupla de los meses del año.
+tuplaMeses=('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre')
+#Las categorías deberían ser guardadas en un archivo para no perder las nuevas o las modificaciones que se hacen
+categorias=['Aliminetación', 'Alquiler', 'Entretenimiento', 'Transporte', 'Estudios', 'Salud','Servicios']
+#Pre cargo una lista de gastos para las prueabas
+matrizGastos=[[1, '2024-03-23', 200.45, 'Salud'], [2, '2024-03-23', 120.00, 'Alquiler'], [3, '2024-03-23', 100.5, 'Salud'], [4, '2024-03-23', 715.55, 'Servicios']]
+#Debemos guardar las descripciones del diccionario en un archivo descripcionesCategorias. Mientras la precargo para probar.
+descripcionCategorias={
+    'Aliminetación':'Gastos relacionados a la alimentación como supermercado, almacen, verdulería.', 
+    'Alquiler':'Gastos de alquiler o renta del lugar de vivir o para automotores, depósitos, etc...', 
+    'Entretenimiento':'Gastos de diversión como por ejemplo cine, teatro, vacaciones.', 
+    'Transporte':'Viaticos relacionados a la movilidad regular del mes como son la Sube, larga distancia, tren, etc...', 
+    'Estudios':'Los gastos de estudios como son la universidad, cursos, talleres.', 
+    'Salud':'Gastos de la medicina o relacionados como son los medicamentos.',
+    'Servicios':'Los gastos fijos inherentes a la vivienda, cochera, depósito.'
+    }
+
+# Menú que selecciona la acción principal y llama a los demás sub menús del programa:
+menuMain()
+opcion=int(input('Ingrese la opción deseada: '))
+while opcion!=9:
+    if opcion==1:
+        cargarNuevoGasto(categorias, matrizGastos)
+        menuMain()
+        opcion=int(input('Ingrese la opción deseada: '))        
+    elif opcion==2: 
+        consultarGastos(matrizGastos, categorias, tuplaMeses)
+        menuMain()
+        opcion=int(input('Ingrese la opción deseada: '))
+    elif opcion==3:
+        listaDeCategorias(categorias, descripcionCategorias)
+        menuMain()
+        opcion=int(input('Ingrese la opción deseada: '))
+    elif opcion==4:
+        editarListaDeCategorias(categorias, descripcionCategorias)
+        menuMain()
+        opcion=int(input('Ingrese la opción deseada: '))
+    elif opcion==5:
+        editarGastos(matrizGastos)
+        menuMain()
+        opcion=int(input('Ingrese la opción deseada: '))
+    elif opcion==9:
+        print(f'¡Gracias por elejirnos!\n')
+    else:
+        print('El valor ingresado no es un menú válido. Por favor ingrese nuevamente.')
+
+
+
 
