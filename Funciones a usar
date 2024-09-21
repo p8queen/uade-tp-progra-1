@@ -2,13 +2,13 @@
 def crearDiccionarioGastos (tuplaMeses, matrizGastos, diccionarioGastos):
 
 # Mostrar los gastos de 1 mes por categoria:
-def mostrarGastos (diccionarioGastos, mes):
+def mostrarGastosPorMes (matrizGastos, mes):
 
 # obtener total de gastos por categoria de todo el diccionario
-def totalGastosPorCategoria(diccionarioGastos):
+def totalGastosPorCategoria(matrizGastos):
 
 # obtener subtotales por mes 
-def totalGastosPorMes(diccionarioGastos):
+def totalGastosPorMes(matrizGastos):
 
 # obtener lista de categorias, eliminando duplicados para el mes
 def listaDeCategorias(matrizGastos):
