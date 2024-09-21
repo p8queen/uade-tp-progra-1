@@ -37,6 +37,32 @@ def menuEditarGastos():
         4 - Editar gasto por Fecha.
         9 - Volver al menú anterior.\n""")
 
+# Carga nuevo gasto y asigna un ID único 
+def cargarNuevoGasto(categorias, matrizGastos):
+    print('\nPara cargar un gasto debe completar Fecha (YYYY-MM-DD), Monto del gasto y Categoría.\nLas categorías posibles son:\n')
+    id=matrizGastos[-1][0]+1
+    fechaGasto=input('Fecha en formato YYYY-MM-DD: ')
+    importeGasto=float(input('Importe del gasto: '))
+    listaDeCategorias(categorias)
+    categoriaGasto=int(input('De la lista de categorias indique el número de la misma para seleccionarla: '))
+    gastoNuevo=[id,fechaGasto,importeGasto,categorias[categoriaGasto-1]]
+    matrizGastos.append(gastoNuevo)
+    print(matrizGastos)
+
+def buscarGastoPorFecha(matrizGastos, fecha):
+    gastosPorFecha=[]
+    for gasto in matrizGastos:
+        if gasto[1]==fecha:
+            gastosPorFecha.append(gasto)
+    if gastosPorFecha==[]:
+        print(f'\nNo hay gastos para la fecha {fecha}')
+    else:
+        print(f'Los gastos que coinciden con {fecha} son:\n')
+        i=0
+        for gasto in gastosPorFecha:
+            print(f'ID: {gastosPorFecha[i][0]} - Fecha: {gastosPorFecha[i][1]} - Importe:: {gastosPorFecha[i][2]} - Categoria:: {gastosPorFecha[i][3]}')
+            i+=1
+
 # Función menú para consultar gastos:
 def consultarGastos(matrizGastos, categorias, tuplaMeses):
     menuConsultarGastos ()
@@ -84,6 +110,44 @@ def consultarGastos(matrizGastos, categorias, tuplaMeses):
         else:
             print('La opción ingresada no es válida.\nIngrese nuevamente.') 
             opcion=int(input('Ingrese la opción deseada: '))
+
+# Edita la lista de categorías
+def editarListaDeCategorias(categorias,descripcionCategorias):
+    menuCategorias()
+    opcionCat=int(input('\nIngrese la opción deseada: '))
+    while opcionCat!=5:
+        if opcionCat==1:
+            listaDeCategorias(categorias, descripcionCategorias)
+            menuCategorias()
+            opcionCat=int(input('\nIngrese la opción deseada: '))
+        elif opcionCat==2:
+            nuevaCategoria=input('\nIngrese el nombre de la nueva Categoría: ')
+            categorias.append(nuevaCategoria)
+            descripcionCategorias[nuevaCategoria]=input(f'\nAgregar nueva descripción para la categoría {nuevaCategoria}: ')
+            menuCategorias()
+            opcionCat=int(input('\nIngrese la opción deseada: '))
+        elif opcionCat==3:
+            listaDeCategorias(categorias, descripcionCategorias)
+            eliminarCategoria=int(input('\nIngrese el número de la categoría que desea eliminar de la lista: '))
+            print(f'\nLa categoría a eliminar es: {categorias[eliminarCategoria-1]}')
+            categorias.pop(eliminarCategoria-1)
+            menuCategorias()  
+            opcionCat=int(input('\nIngrese la opción deseada: '))    
+        elif opcionCat==4:
+            listaDeCategorias(categorias, descripcionCategorias)
+            editarDescripcion=int(input('\nIngrese el número de la categoría de la lista que desea editar su descripcion: ')) 
+            descripcionCategorias[categorias[editarDescripcion]]=input(f'\nIngrese la descripción nueva para la categoria {categorias[editarDescripcion]}: ')
+            menuCategorias()  
+            opcionCat=int(input('\nIngrese la opción deseada: '))    
+        elif opcionCat==5:
+            listaDeCategoriasUnicas(matrizGastos)
+            menuCategorias()  
+            opcionCat=int(input('\nIngrese la opción deseada: '))    
+        elif opcionCat==9:
+            return 0
+        else:
+            print('\nLa opción ingresada no es válida.\nIngrese nuevamente.') 
+            opcionCat=int(input('Ingrese la opción deseada: '))
 
 # Función menú que edita/elimina gastos:
 def editarGastos(matrizGastos):
