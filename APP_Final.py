@@ -160,6 +160,7 @@ def editarGastos(matrizGastos):
             menuEditarGastos ()
             opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
         elif opcion==2:
+            id=int(input('Ingrese el ID que quiere buscar:'))
             editarGasto(matrizGastos,id)
             menuEditarGastos ()
             opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
@@ -177,6 +178,28 @@ def editarGastos(matrizGastos):
             print('La opción ingresada no es válida.\nIngrese nuevamente.') 
             opcion=int(input('Ingrese la opción deseada: '))            
 
+def editarGasto(matrizGastos, id):
+    queEdita=int(input('\n ¿Qué desea editar?\n1 - Fecha\n2 - Monto\n3 - Categoría\nIngrese la opcion: '))
+    i=0
+    if queEdita==1:
+        for gasto in matrizGastos:
+            if gasto[i][0]==id:
+               gasto[i][1]=input('Ingrese Nueva fecha con formato YYYY-MM-DD: ')
+            i+=1
+    elif queEdita==2:
+        for gasto in matrizGastos:
+            if gasto[i][0]==id:
+               gasto[i][2]=input('Ingrese Nuevo monto: ')
+            i+=1
+    elif queEdita==3:
+        for gasto in matrizGastos:
+            if gasto[i][0]==id:
+                listaDeCategorias(categorias)
+                nuevaCategoria=int(input('Ingrese el número de categoría nuevo: '))
+                gasto[i][3]=categorias[nuevaCategoria-1]
+            i+=1
+    else:
+        queEdita=int(input('Opción ingresada es inválida. Ingrese nuevamente: '))
 
 
 # Main. 
