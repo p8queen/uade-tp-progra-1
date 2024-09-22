@@ -51,9 +51,11 @@ def cargarNuevoGasto(categorias, matrizGastos):
 
 def buscarGastoPorFecha(matrizGastos, fecha):
     gastosPorFecha=[]
+    i=0
     for gasto in matrizGastos:
-        if gasto[1]==fecha:
+        if gasto[i][1]==fecha:
             gastosPorFecha.append(gasto)
+        i+=1
     if gastosPorFecha==[]:
         print(f'\nNo hay gastos para la fecha {fecha}')
     else:
@@ -178,6 +180,7 @@ def editarGastos(matrizGastos):
             print('La opción ingresada no es válida.\nIngrese nuevamente.') 
             opcion=int(input('Ingrese la opción deseada: '))            
 
+# Edita Gasto pasando un ID
 def editarGastoId(matrizGastos, id):
     queEdita=int(input('\n ¿Qué desea editar?\n1 - Fecha\n2 - Monto\n3 - Categoría\nIngrese la opcion: '))
     i=0
@@ -201,6 +204,25 @@ def editarGastoId(matrizGastos, id):
     else:
         queEdita=int(input('Opción ingresada es inválida. Ingrese nuevamente: '))
 
+# Funcion para buscar por una categoria determinada los gastos
+def buscarGastoPorCategoria(matrizGastos, categorias):
+    gastosPorCategoria=[]
+    i=0
+    listaDeCategorias(categorias)
+    buscarCategoria=int(input('Ingrese el número de la categoría a buscar: '))
+    for gasto in matrizGastos:
+        if gasto[i][1]==categorias[buscarCategoria-1]:
+            gastosPorCategoria.append(gasto)
+        i+=1   
+    if gastosPorCategoria==[]:
+        print(f'\nNo hay gastos para la categoría {categorias[buscarCategoria-1]}')
+    else:
+        print(f'Los gastos que coinciden con {categorias[buscarCategoria-1]} son:\n')
+        j=0
+        for gasto in gastosPorCategoria:
+            print(f'ID: {gastosPorCategoria[j][0]} - Fecha: {gastosPorCategoria[j][1]} - Importe:: {gastosPorCategoria[j][2]} - Categoria:: {gastosPorCategoria[j][3]}')
+            j+=1
+            
 
 # Main. 
 # Declaramos listas, tuplas, matrices y diccionarios que se usan en el programa.
