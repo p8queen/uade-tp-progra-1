@@ -38,12 +38,12 @@ def menuEditarGastos():
         9 - Volver al menú anterior.\n""")
 
 # Carga nuevo gasto y asigna un ID único 
-def cargarNuevoGasto(categorias, matrizGastos):
+def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias):
     print('\nPara cargar un gasto debe completar Fecha (YYYY-MM-DD), Monto del gasto y Categoría.\nLas categorías posibles son:\n')
     id=matrizGastos[-1][0]+1
     fechaGasto=input('Fecha en formato YYYY-MM-DD: ')
     importeGasto=float(input('Importe del gasto: '))
-    listaDeCategorias(categorias)
+    listaDeCategorias(categorias,descripcionCategorias)
     categoriaGasto=int(input('De la lista de categorias indique el número de la misma para seleccionarla: '))
     gastoNuevo=[id,fechaGasto,importeGasto,categorias[categoriaGasto-1]]
     matrizGastos.append(gastoNuevo)
@@ -66,7 +66,7 @@ def buscarGastoPorFecha(matrizGastos, fecha):
             i+=1
 
 # Función menú para consultar gastos:
-def consultarGastos(matrizGastos, categorias, tuplaMeses):
+def consultarGastos(matrizGastos, categorias, tuplaMeses, descripcionCategorias):
     menuConsultarGastos ()
     opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
     while opcion!=9:
@@ -104,7 +104,7 @@ def consultarGastos(matrizGastos, categorias, tuplaMeses):
             menuConsultarGastos ()
             opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
         elif opcion==7:
-            buscarGastoPorCategoria(matrizGastos, categorias)
+            buscarGastoPorCategoria(matrizGastos, categorias, descripcionCategorias)
             menuConsultarGastos ()
             opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
         elif opcion==9:
@@ -181,39 +181,33 @@ def editarGastos(matrizGastos):
             opcion=int(input('Ingrese la opción deseada: '))            
 
 # Edita Gasto pasando un ID
-def editarGastoId(matrizGastos, id):
+def editarGastoId(matrizGastos, id, descripcionCategorias):
     queEdita=int(input('\n ¿Qué desea editar?\n1 - Fecha\n2 - Monto\n3 - Categoría\nIngrese la opcion: '))
-    i=0
     if queEdita==1:
         for gasto in matrizGastos:
-            if gasto[i][0]==id:
-               gasto[i][1]=input('Ingrese Nueva fecha con formato YYYY-MM-DD: ')
-            i+=1
+            if gasto[0]==id:
+               gasto[1]=input('Ingrese Nueva fecha con formato YYYY-MM-DD: ')
     elif queEdita==2:
         for gasto in matrizGastos:
-            if gasto[i][0]==id:
-               gasto[i][2]=input('Ingrese Nuevo monto: ')
-            i+=1
+            if gasto[0]==id:
+               gasto[2]=input('Ingrese Nuevo monto: ')
     elif queEdita==3:
         for gasto in matrizGastos:
-            if gasto[i][0]==id:
-                listaDeCategorias(categorias)
+            if gasto[0]==id:
+                listaDeCategorias(categorias,descripcionCategorias)
                 nuevaCategoria=int(input('Ingrese el número de categoría nuevo: '))
-                gasto[i][3]=categorias[nuevaCategoria-1]
-            i+=1
+                gasto[3]=categorias[nuevaCategoria-1]
     else:
         queEdita=int(input('Opción ingresada es inválida. Ingrese nuevamente: '))
 
 # Funcion para buscar por una categoria determinada los gastos
-def buscarGastoPorCategoria(matrizGastos, categorias):
+def buscarGastoPorCategoria(matrizGastos, categorias,descripcionCategorias):
     gastosPorCategoria=[]
-    i=0
-    listaDeCategorias(categorias)
+    listaDeCategorias(categorias,descripcionCategorias)
     buscarCategoria=int(input('Ingrese el número de la categoría a buscar: '))
     for gasto in matrizGastos:
-        if gasto[i][1]==categorias[buscarCategoria-1]:
+        if gasto[3]==categorias[buscarCategoria-1]:
             gastosPorCategoria.append(gasto)
-        i+=1   
     if gastosPorCategoria==[]:
         print(f'\nNo hay gastos para la categoría {categorias[buscarCategoria-1]}')
     else:
