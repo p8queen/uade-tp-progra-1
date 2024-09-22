@@ -2,3 +2,4 @@
 test.py
 *.ipynb
 .vscode
+APP.py
