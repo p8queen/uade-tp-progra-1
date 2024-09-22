@@ -156,7 +156,7 @@ def editarGastos(matrizGastos):
     while opcion!=9:
         if opcion==1:
             id=int(input('Ingrese el ID que quiere buscar:'))
-            eliminarGasto(matrizGastos, id)
+            eliminarGastoId(matrizGastos, id)
             menuEditarGastos ()
             opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
         elif opcion==2:
@@ -178,7 +178,7 @@ def editarGastos(matrizGastos):
             print('La opción ingresada no es válida.\nIngrese nuevamente.') 
             opcion=int(input('Ingrese la opción deseada: '))            
 
-def editarGasto(matrizGastos, id):
+def editarGastoId(matrizGastos, id):
     queEdita=int(input('\n ¿Qué desea editar?\n1 - Fecha\n2 - Monto\n3 - Categoría\nIngrese la opcion: '))
     i=0
     if queEdita==1:
