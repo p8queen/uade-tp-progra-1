@@ -138,7 +138,7 @@ def editarListaDeCategorias(categorias,descripcionCategorias):
         elif opcionCat==4:
             listaDeCategorias(categorias, descripcionCategorias)
             editarDescripcion=int(input('\nIngrese el número de la categoría de la lista que desea editar su descripcion: ')) 
-            descripcionCategorias[categorias[editarDescripcion]]=input(f'\nIngrese la descripción nueva para la categoria {categorias[editarDescripcion]}: ')
+            descripcionCategorias[categorias[editarDescripcion-1]]=input(f'\nIngrese la descripción nueva para la categoria {categorias[editarDescripcion-1]}: ')
             menuCategorias()  
             opcionCat=int(input('\nIngrese la opción deseada: '))    
         elif opcionCat==5:
