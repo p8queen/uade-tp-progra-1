@@ -20,7 +20,7 @@ Eliminar una categoría no elimina el gasto ya cargado en la misma.\nPara eso de
     
 def menuConsultarGastos():
         print("""\nElija como ver los gastos:
-        1 - Gastos por categorias.
+        1 - Total gastos por categorias.
         2 - Gastos por mes.
         3 - Gastos por mes por categoría.
         4 - Gastos por ID.
