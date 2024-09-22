@@ -216,7 +216,19 @@ def buscarGastoPorCategoria(matrizGastos, categorias,descripcionCategorias):
         for gasto in gastosPorCategoria:
             print(f'ID: {gastosPorCategoria[j][0]} - Fecha: {gastosPorCategoria[j][1]} - Importe:: {gastosPorCategoria[j][2]} - Categoria:: {gastosPorCategoria[j][3]}')
             j+=1
-            
+
+def totalGastosPorCategoria(matrizGastos):
+    totalPorCategoria={}
+    for gasto in matrizGastos:
+        imp=gasto[2]
+        cat=gasto[3]
+        if cat in totalPorCategoria:
+            totalPorCategoria[cat]+=imp
+        else:
+            totalPorCategoria[cat]=imp
+    print(f'Los gastos por categoría son: \n')
+    for categoria, impTotal in totalPorCategoria.items():
+        print(f'{categoria}: $ {impTotal}.')
 
 # Main. 
 # Declaramos listas, tuplas, matrices y diccionarios que se usan en el programa.
