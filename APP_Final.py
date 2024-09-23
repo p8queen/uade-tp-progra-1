@@ -18,7 +18,7 @@ def totalGastosPorMes(diccionarioGastos):
     for mes in tuplaMeses:
         print(f'{mes}: ${totalGastosMes(diccionarioGastos, mes)}')
 
-def eliminarGasto(matrizGastos, id):
+def eliminarGastoId(matrizGastos, id):
     encontrado = False
     i=0
     while i < len(matrizGastos) and not encontrado:
@@ -27,7 +27,6 @@ def eliminarGasto(matrizGastos, id):
             encontrado = True
         i += 1
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
-    return encontrado
 
 def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
     gastos = []
