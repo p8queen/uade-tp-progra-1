@@ -316,13 +316,13 @@ def totalGastosPorCategoria(matrizGastos):
 # Tupla de los meses del año.
 tuplaMeses=('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre')
 #Las categorías deberían ser guardadas en un archivo para no perder las nuevas o las modificaciones que se hacen
-categorias=['Aliminetación', 'Alquiler', 'Entretenimiento', 'Transporte', 'Estudios', 'Salud','Servicios']
+categorias=['Alimentación', 'Alquiler', 'Entretenimiento', 'Transporte', 'Estudios', 'Salud','Servicios']
 #Pre cargo una lista de gastos para las prueabas
 matrizGastos=[[1, '2024-03-23', 200.45, 'Salud'], [2, '2024-03-23', 120.00, 'Alquiler'], [3, '2024-03-23', 100.5, 'Salud'], [4, '2024-03-23', 715.55, 'Servicios']]
 diccionarioGastos = {}
 #Debemos guardar las descripciones del diccionario en un archivo descripcionesCategorias. Mientras la precargo para probar.
 descripcionCategorias={
-    'Aliminetación':'Gastos relacionados a la alimentación como supermercado, almacen, verdulería.', 
+    'Alimentación':'Gastos relacionados a la alimentación como supermercado, almacen, verdulería.', 
     'Alquiler':'Gastos de alquiler o renta del lugar de vivir o para automotores, depósitos, etc...', 
     'Entretenimiento':'Gastos de diversión como por ejemplo cine, teatro, vacaciones.', 
     'Transporte':'Viaticos relacionados a la movilidad regular del mes como son la Sube, larga distancia, tren, etc...', 
