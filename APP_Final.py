@@ -1,3 +1,52 @@
+# funciones Gustavo 
+
+def mostrarGastos (diccionarioGastos, mes):
+    print(f'Gastos de {mes}:')
+    # calcular sub totales por categorias 
+    for categoria in diccionarioGastos[mes]:
+        total = sum(diccionarioGastos[mes][categoria])
+        print(f'\t{categoria}: {total}')
+
+# obtener de diccionario el total de gastos de un mes
+def totalGastosMes(diccionario, mes):
+    total = 0
+    for categoria in diccionario[mes]:
+        total += sum(diccionario[mes][categoria]) # suma los importes de cada categoria
+    print(f'Total de gastos de {mes}: ${total}')
+
+def totalGastosPorMes(diccionarioGastos):
+    for mes in tuplaMeses:
+        print(f'{mes}: ${totalGastosMes(diccionarioGastos, mes)}')
+
+def eliminarGasto(matrizGastos, id):
+    encontrado = False
+    i=0
+    while i < len(matrizGastos) and not encontrado:
+        if matrizGastos[i][0] == id:
+            del matrizGastos[i]
+            encontrado = True
+        i += 1
+    return encontrado
+
+def buscarGastoPorCategoria(matrizGastos, categoria, categorias):
+    gastos = []
+    for gasto in matrizGastos:
+        if gasto[3] == categoria:
+            gastos.append(gasto)
+    for gasto in gastos:
+        print(gasto)
+    
+
+def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
+    gastos = []
+    for gasto in matrizGasto:
+        if gasto[2] >= minimo and gasto[2] <= maximo:
+            gastos.append(gasto)
+    for gasto in gastos:
+        print(gasto)
+
+# fin funciones Gustavo
+
 # Menús que se imprimen generales:
 def menuMain():
     print("""\nMenú de opciones:
