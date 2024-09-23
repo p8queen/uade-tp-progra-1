@@ -126,7 +126,7 @@ def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias):
     categoriaGasto=int(input('De la lista de categorias indique el número de la misma para seleccionarla: '))
     gastoNuevo=[id,fechaGasto,importeGasto,categorias[categoriaGasto-1]]
     matrizGastos.append(gastoNuevo)
-    print(matrizGastos)
+    crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
 
 def buscarGastoPorFecha(matrizGastos, fecha):
     gastosPorFecha=[]
