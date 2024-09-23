@@ -28,15 +28,6 @@ def eliminarGasto(matrizGastos, id):
         i += 1
     return encontrado
 
-def buscarGastoPorCategoria(matrizGastos, categoria, categorias):
-    gastos = []
-    for gasto in matrizGastos:
-        if gasto[3] == categoria:
-            gastos.append(gasto)
-    for gasto in gastos:
-        print(gasto)
-    
-
 def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
     gastos = []
     for gasto in matrizGasto:
