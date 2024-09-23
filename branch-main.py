@@ -13,7 +13,7 @@ def totalGastosMes(diccionarioGastos, mes):
         total += sum(diccionarioGastos[mes][categoria]) # suma los importes de cada categoria
     print(f'Total de gastos de {mes}: ${total}')
 
-def totalGastosPorMes(diccionarioGastos):
+def totalGastosPorMes(diccionarioGastos, tuplaMeses):
     for mes in tuplaMeses:
         print(f'{mes}: ${totalGastosMes(diccionarioGastos, mes)}')
 
@@ -399,4 +399,3 @@ while opcion!=9:
     else:
         print('El valor ingresado no es un menú válido. Por favor ingrese nuevamente.')
 
-        
