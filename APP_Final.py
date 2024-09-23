@@ -109,6 +109,13 @@ def menuEditarGastos():
         4 - Editar gasto por Fecha.
         9 - Volver al menú anterior.\n""")
 
+def listaDeCategorias(categorias, descripcionCategorias):
+    print('\nCategorias: \n')
+    i=0
+    for categoria in categorias:
+        i+=1
+        print(f'{i} - {categoria} : {descripcionCategorias[categoria]}')
+        
 # Carga nuevo gasto y asigna un ID único 
 def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias):
     print('\nPara cargar un gasto debe completar Fecha (YYYY-MM-DD), Monto del gasto y Categoría.\nLas categorías posibles son:\n')
