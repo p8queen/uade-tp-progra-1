@@ -8,10 +8,10 @@ def mostrarGastos (diccionarioGastos, mes):
         print(f'\t{categoria}: {total}')
 
 # obtener de diccionario el total de gastos de un mes
-def totalGastosMes(diccionario, mes):
+def totalGastosMes(diccionarioGastos, mes):
     total = 0
-    for categoria in diccionario[mes]:
-        total += sum(diccionario[mes][categoria]) # suma los importes de cada categoria
+    for categoria in diccionarioGastos[mes]:
+        total += sum(diccionarioGastos[mes][categoria]) # suma los importes de cada categoria
     print(f'Total de gastos de {mes}: ${total}')
 
 def totalGastosPorMes(diccionarioGastos):
