@@ -73,36 +73,9 @@ def buscarGastoPorId(matrizGastos, id): #Buscar el gasto por el registro id
         if gasto[0] == id:  # El primer elemento de cada fila es el ID
             return gasto  # Devolver la fila completa si el ID coincide
 
-def listaDeCategorias(matrizGastos, mes): 
-    categorias = set()  # Usamos un conjunto (set) para eliminar duplicados automáticamente
-
-    # Recorrer la matriz de gastos
-    for fila in matrizGastos:
-        fecha_str, importe, categoria = fila
-
-        # Extraer el número del mes (caracteres del 5 al 6 de la fecha)
-        mes_num = fecha_str[5:7]
-        
-        # Si el mes coincide con el mes especificado
-        if tupla[int(mes_num) - 1] == mes.lower():
-            categorias.add(categoria)  # Añadir la categoría al conjunto
-
-    # Convertimos el conjunto a una lista y la devolvemos
-    return list(categorias)
-
-def listaDeCategorias(categorias, descripcionCategorias): #impresion de las categorias
-    # Recorrer cada categoría de la lista
-    for categoria in categorias:
-        # Verificar si la categoría tiene una descripción en el diccionario
-        if categoria in descripcionCategorias:
-            descripcion = descripcionCategorias[categoria]
-        else:
-            descripcion = "Descripción no disponible"
-        
-        # Imprimir la categoría y su descripción
-        print(f"Categoría: {categoria}")
-        print(f"Descripción: {descripcion}")
-        print()  # Línea en blanco para separar cada categoría
+def listaDeCategoriasUnicas(matrizGastos): 
+    categoria = [x[3] for x in matriz]
+    print(set(categoria))
 
 # Fin funciones Pablo
 
