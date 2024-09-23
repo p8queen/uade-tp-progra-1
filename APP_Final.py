@@ -278,6 +278,7 @@ def editarGastoId(matrizGastos, id, descripcionCategorias):
                 gasto[3]=categorias[nuevaCategoria-1]
     else:
         queEdita=int(input('Opción ingresada es inválida. Ingrese nuevamente: '))
+        crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
 
 # Funcion para buscar por una categoria determinada los gastos
 def buscarGastoPorCategoria(matrizGastos, categorias,descripcionCategorias):
