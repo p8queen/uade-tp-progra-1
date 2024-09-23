@@ -49,6 +49,18 @@ def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
 
 # Funciones Pablo:
 
+def crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos):
+    for linea in matrizGastos:
+        # linea[0] es de la forma YYYY-MM-DD 
+        mes = tuplaMeses[int(linea[1].split('-')[1]) - 1]
+        concepto = linea[3]
+        importe = linea[2]
+        if mes not in diccionarioGastos:
+            diccionarioGastos[mes] = {}
+        if concepto not in diccionarioGastos[mes]:
+            diccionarioGastos[mes][concepto] = []
+        diccionarioGastos[mes][concepto].append(importe)
+        
 def buscarGastoPorId(matrizGastos, id): #Buscar el gasto por el registro id
     # Recorrer la matriz para buscar el gasto con el ID proporcionado
     for gasto in matrizGastos:
