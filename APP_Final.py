@@ -26,6 +26,7 @@ def eliminarGasto(matrizGastos, id):
             del matrizGastos[i]
             encontrado = True
         i += 1
+    crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
     return encontrado
 
 def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
