@@ -1,6 +1,5 @@
-# funciones Gustavo 
 
-def mostrarGastos (diccionarioGastos, mes):
+def mostrarGastosPorMes(diccionarioGastos, mes):
     print(f'Gastos de {mes}:')
     # calcular sub totales por categorias 
     for categoria in diccionarioGastos[mes]:
@@ -36,9 +35,7 @@ def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
     for gasto in gastos:
         print(gasto)
 
-# fin funciones Gustavo
 
-# Funciones Pablo:
 
 def imprimirOrdenado(diccionarioGastos): #Ordena alfabeticamente el contenido interno del diccionario
     for mes, categorias in diccionarioGastos.items():
@@ -58,17 +55,15 @@ def crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos):
             diccionarioGastos[mes][concepto] = []
         diccionarioGastos[mes][concepto].append(importe)
         
-def buscarGastoPorId(matrizGastos, id): #Buscar el gasto por el registro id
-    # Recorrer la matriz para buscar el gasto con el ID proporcionado
+def buscarGastoPorId(matrizGastos, id): 
     for gasto in matrizGastos:
-        if gasto[0] == id:  # El primer elemento de cada fila es el ID
-            return gasto  # Devolver la fila completa si el ID coincide
+        if gasto[0] == id:  
+            return gasto  
 
 def listaDeCategoriasUnicas(matrizGastos): 
-    categoria = [x[3] for x in matriz]
+    categoria = [x[3] for x in matrizGastos]
     print(set(categoria))
 
-# Fin funciones Pablo
 
 # Menús que se imprimen generales:
 def menuMain():
@@ -144,6 +139,51 @@ def buscarGastoPorFecha(matrizGastos, fecha):
             print(f'ID: {gastosPorFecha[i][0]} - Fecha: {gastosPorFecha[i][1]} - Importe:: {gastosPorFecha[i][2]} - Categoria:: {gastosPorFecha[i][3]}')
             i+=1
 
+def eliminarGastoPorFecha(matrizGastos):
+    gastosPorFecha=[]
+    fechaEliminar=input('\nIngrese la fecha del gasto a eliminar: Formato YYYY-MM-DD')
+    for gasto in matrizGastos:
+        if gasto[1]==fechaEliminar:
+            gastosPorFecha.append(gasto)
+    if not gastosPorFecha:
+        print('\nNo hay gastos para la fecha ',fechaEliminar)
+    else:
+        print('Los gastos que coinciden con esa fecha son:\n', gastosPorFecha)
+        numEliminar=int(input('Ingrese el ID del gasto a eliminar: \n'))
+        matrizGastos.pop(numEliminar-1)
+    crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
+
+# Edita Gasto por FECHA
+def editarGastoPorFecha(matrizGastos, descripcionCategorias):
+    gastosPorFecha=[]
+    fechaModificar=input('\nIngrese la fecha del gasto a editar: Formato YYYY-MM-DD')
+    for gasto in matrizGastos:
+        if gasto[1]==fechaModificar:
+            gastosPorFecha.append(gasto)
+    if not gastosPorFecha:
+        print('\nNo hay gastos para la fecha ',fechaModificar)
+    else:
+        print('Los gastos que coinciden con esa fecha son:\n', gastosPorFecha)
+        numEditar=int(input('Ingrese el ID del gasto a editar: \n'))
+        queEdita=int(input('\n ¿Qué desea editar?\n1 - Fecha\n2 - Monto\n3 - Categoría\nIngrese la opcion: '))
+        if queEdita==1:
+            for gasto in matrizGastos:
+                if gasto[0]==numEditar:
+                    gasto[1]=input('Ingrese Nueva fecha: ')
+        elif queEdita==2:
+            for gasto in matrizGastos:
+                if gasto[0]==numEditar:
+                    gasto[2]=input('Ingrese Nuevo monto: ')
+        elif queEdita==3:
+            for gasto in matrizGastos:
+                if gasto[0]==numEditar:
+                    listaDeCategorias(categorias,descripcionCategorias)
+                    nuevaCategoria=int(input('Ingrese el número de categoría: '))
+                    gasto[3]=categorias[nuevaCategoria-1]
+        else:
+            queEdita=int(input('Opción ingresada es inválida. Ingrese nuevamente: '))
+    crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
+
 # Función menú para consultar gastos:
 def consultarGastos(matrizGastos, categorias, tuplaMeses, descripcionCategorias):
     menuConsultarGastos ()
@@ -163,7 +203,7 @@ def consultarGastos(matrizGastos, categorias, tuplaMeses, descripcionCategorias)
                 print(f'{i} - {mes}')
                 i+=1
             mes=int(input('Ingrese el número del mes a consultar: '))
-            mostrarGastosPorMes (matrizGastos, mes)
+            mostrarGastosPorMes(matrizGastos, mes)
             menuConsultarGastos ()
             opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
         elif opcion==4:
@@ -242,7 +282,7 @@ def editarGastos(matrizGastos):
             opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
         elif opcion==2:
             id=int(input('Ingrese el ID que quiere buscar:'))
-            editarGasto(matrizGastos,id)
+            editarGastos(matrizGastos,id)
             menuEditarGastos ()
             opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
         elif opcion==3:
@@ -278,7 +318,7 @@ def editarGastoId(matrizGastos, id, descripcionCategorias):
                 gasto[3]=categorias[nuevaCategoria-1]
     else:
         queEdita=int(input('Opción ingresada es inválida. Ingrese nuevamente: '))
-        crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
+    crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
 
 # Funcion para buscar por una categoria determinada los gastos
 def buscarGastoPorCategoria(matrizGastos, categorias,descripcionCategorias):
@@ -359,6 +399,4 @@ while opcion!=9:
     else:
         print('El valor ingresado no es un menú válido. Por favor ingrese nuevamente.')
 
-
-
-
+        
