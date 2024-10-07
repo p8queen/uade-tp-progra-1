@@ -4,7 +4,7 @@ tuplaMeses=('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'ago
 #Las categorías deberían ser guardadas en un archivo para no perder las nuevas o las modificaciones que se hacen
 categorias=['Alimentación', 'Alquiler', 'Entretenimiento', 'Transporte', 'Estudios', 'Salud','Servicios']
 #Pre cargo una lista de gastos para las prueabas
-matrizGastos=[[1, '2024-03-23', 200.45, 'Salud'], [2, '2024-03-23', 120.00, 'Alquiler'], [3, '2024-03-23', 100.5, 'Salud'], [4, '2024-03-23', 715.55, 'Servicios'],[5, '2024-04-23', 715.55, 'Servicios'],[6, '2024-09-23', 715.55, 'Estudios']]
+[[1, (2024, 3, 23), 200.45, 'Salud'], [2, (2024, 3, 23), 120.0, 'Alquiler'], [3, (2024, 3, 23), 100.5, 'Salud'], [4, (2024, 3, 23), 715.55, 'Servicios'], [5, (2024, 4, 23), 715.55, 'Servicios'], [6, (2024, 9, 23), 715.55, 'Estudios']]
 diccionarioGastos = {}
 #Debemos guardar las descripciones del diccionario en un archivo descripcionesCategorias. Mientras la precargo para probar.
 descripcionCategorias={
@@ -17,11 +17,14 @@ descripcionCategorias={
     'Servicios':'Los gastos fijos inherentes a la vivienda, cochera, depósito.'
     }
 
+def stringFechaAtupla(fecha):
+    return tuple(map(int, fecha.split('-')))
+
 def mostrarGastosPorMes(diccionarioGastos, mes):
     print(f'Gastos de {mes}:')
     for categoria in diccionarioGastos[mes]:
         total = sum(diccionarioGastos[mes][categoria])
-        print(f'\t{categoria}: {total}')
+        print(f'\t{categoria}: ${total}')
 
 def totalGastosPorMes(diccionarioGastos, tuplaMeses):
     for mes in diccionarioGastos:
@@ -36,7 +39,7 @@ def eliminarGastoId(matrizGastos, id):
     i=0
     while i < len(matrizGastos) and not encontrado:
         if matrizGastos[i][0] == id:
-            del matrizGastos[i]
+            matrizGastos[i][0] = 0
             encontrado = True
         i += 1
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
@@ -51,7 +54,7 @@ def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
 
 def crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos):
     for gasto in matrizGastos:
-        mes = tuplaMeses[int(gasto[1].split('-')[1]) - 1]
+        mes = tuplaMeses[gasto[1][1] - 1]
         categoria = gasto[3]
         importe = gasto[2]
         if mes not in diccionarioGastos:
@@ -151,7 +154,11 @@ def eliminarGastoPorFecha(matrizGastos):
     else:
         print('Los gastos que coinciden con esa fecha son:\n', gastosPorFecha)
         numEliminar=int(input('Ingrese el ID del gasto a eliminar: \n'))
-        matrizGastos.pop(numEliminar-1)
+        siNo = input(f'¿Está seguro que desea eliminar el gasto con ID {numEliminar}? (s/n): ')
+        if siNo == 's':
+            eliminarGastoId(matrizGastos, numEliminar)
+        else:
+            print('El gasto no fue eliminado.')
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
 
 def editarGastoPorFecha(matrizGastos, descripcionCategorias):
