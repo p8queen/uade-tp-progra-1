@@ -50,7 +50,7 @@ def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
         if gasto[2] >= minimo and gasto[2] <= maximo:
             gastos.append(gasto)
     for gasto in gastos:
-        print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: {gasto[2]} - Categoria: {gasto[3]}') 
+        print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]}') 
 
 def crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos):
     for gasto in matrizGastos:
@@ -66,7 +66,7 @@ def crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos):
 def buscarGastoPorId(matrizGastos, id): 
     for gasto in matrizGastos:
         if gasto[0] == id: 
-            print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: {gasto[2]} - Categoria: {gasto[3]}')  
+            print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]}')  
 
 def listaDeCategoriasUnicas(matrizGastos): 
     categoria = [gasto[3] for gasto in matrizGastos]
@@ -140,7 +140,7 @@ def buscarGastoPorFecha(matrizGastos, fecha):
         print(f'Los gastos que coinciden con {fecha} son:\n')
         i=0
         for gasto in gastosPorFecha:
-            print(f'ID: {gastosPorFecha[i][0]} - Fecha: {gastosPorFecha[i][1]} - Importe:: {gastosPorFecha[i][2]} - Categoria:: {gastosPorFecha[i][3]}')
+            print(f'ID: {gastosPorFecha[i][0]} - Fecha: {gastosPorFecha[i][1]} - Importe: ${gastosPorFecha[i][2]} - Categoria:: {gastosPorFecha[i][3]}')
             i+=1
 
 def eliminarGastoPorFecha(matrizGastos):
@@ -332,7 +332,7 @@ def buscarGastoPorCategoria(matrizGastos, categorias,descripcionCategorias):
         print(f'Los gastos que coinciden con {categorias[buscarCategoria-1]} son:\n')
         j=0
         for gasto in gastosPorCategoria:
-            print(f'ID: {gastosPorCategoria[j][0]} - Fecha: {gastosPorCategoria[j][1]} - Importe:: {gastosPorCategoria[j][2]} - Categoria:: {gastosPorCategoria[j][3]}')
+            print(f'ID: {gastosPorCategoria[j][0]} - Fecha: {gastosPorCategoria[j][1]} - Importe: ${gastosPorCategoria[j][2]} - Categoria:: {gastosPorCategoria[j][3]}')
             j+=1
 
 def totalGastosPorCategoria(matrizGastos):
