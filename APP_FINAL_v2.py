@@ -4,7 +4,7 @@ tuplaMeses=('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'ago
 #Las categorías deberían ser guardadas en un archivo para no perder las nuevas o las modificaciones que se hacen
 categorias=['Alimentación', 'Alquiler', 'Entretenimiento', 'Transporte', 'Estudios', 'Salud','Servicios']
 #Pre cargo una lista de gastos para las prueabas
-[[1, (2024, 3, 23), 200.45, 'Salud'], [2, (2024, 3, 23), 120.0, 'Alquiler'], [3, (2024, 3, 23), 100.5, 'Salud'], [4, (2024, 3, 23), 715.55, 'Servicios'], [5, (2024, 4, 23), 715.55, 'Servicios'], [6, (2024, 9, 23), 715.55, 'Estudios']]
+matrizGastos=[[1, (2024, 3, 23), 200.45, 'Salud'], [2, (2024, 3, 23), 120.0, 'Alquiler'], [3, (2024, 3, 23), 100.5, 'Salud'], [4, (2024, 3, 23), 715.55, 'Servicios'], [5, (2024, 4, 23), 715.55, 'Servicios'], [6, (2024, 9, 23), 715.55, 'Estudios']]
 diccionarioGastos = {}
 #Debemos guardar las descripciones del diccionario en un archivo descripcionesCategorias. Mientras la precargo para probar.
 descripcionCategorias={
