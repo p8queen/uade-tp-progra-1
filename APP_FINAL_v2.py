@@ -348,6 +348,10 @@ def totalGastosPorCategoria(matrizGastos):
     for categoria, impTotal in totalPorCategoria.items():
         print(f'{categoria}: $ {impTotal}.')
 
+def buscarEliminados(matrizGastos):
+    eliminados = filter(lambda gasto: not gasto[4], matrizGastos)
+    return list(eliminados)
+
 # Main. 
 
 crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
