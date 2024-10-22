@@ -22,10 +22,13 @@ def stringFechaAtupla(fecha):
 
 def mostrarGastosPorMes(diccionarioGastos, mes):
     print(f'Gastos de {mes}:')
-    for categoria in diccionarioGastos[mes]:
-        total = sum(diccionarioGastos[mes][categoria])
-        print(f'\t{categoria}: ${total}')
-
+    try:
+        for categoria in diccionarioGastos[mes]:
+            total = sum(diccionarioGastos[mes][categoria])
+            print(f'\t{categoria}: ${total}')
+    except KeyError:
+        print(f'\tNo hay gastos de {mes}.')
+    
 def totalGastosPorMes(diccionarioGastos, tuplaMeses):
     for mes in diccionarioGastos:
         total = 0
@@ -39,7 +42,7 @@ def eliminarGastoId(matrizGastos, id):
     i=0
     while i < len(matrizGastos) and not encontrado:
         if matrizGastos[i][0] == id:
-            matrizGastos[i][0] = 0
+            matrizGastos[i][4] = False
             encontrado = True
         i += 1
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
