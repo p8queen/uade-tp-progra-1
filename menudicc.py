@@ -55,6 +55,10 @@ def runFuncion(opcion):
         print('Ver gastos')
     elif opcion == 3:
         print('Ver lista de categorías')
+    elif opcion == 4:
+        print('Editar lista de categorías')
+    elif opcion == 5:
+        print('Editar gasto')
     elif opcion == 21:
         print('Total gastos por categorias')
     elif opcion == 22:
