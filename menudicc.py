@@ -1,3 +1,5 @@
+import os
+
 descripcionCategorias={
     1:{'Alimentación':'Gastos relacionados a la alimentación como supermercado, almacen, verdulería.'}, 
     2:{'Alquiler':'Gastos de alquiler o renta del lugar de vivir o para automotores, depósitos, etc...'}, 
@@ -77,6 +79,7 @@ def runFuncion(opcion):
         print('   -----------------------   ')
 
 def menuDicc():
+    os.system('clear')
     for k,v in menu.items():
         #print(type(menu[k]), menu[k] )
         if type(menu[k]) == dict:
