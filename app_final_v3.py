@@ -1,5 +1,7 @@
 import menudicc as md
 
+
+
 # MAIN
 menu = md.cargarMenuJson()
 opcion = 0
@@ -8,7 +10,7 @@ print('   -----------------------   ')
 
 while opcion!=9:
     opcion= int(input('Ingrese la opción deseada: '))
-    if opcion < 10:
+    if opcion > 1 and opcion < 10:
         md.subMenuDicc(menu, opcion)
     else:
         md.runFuncion(menu, opcion)

@@ -1,5 +1,24 @@
 import json
 import os
+import funciones as f
+
+# Declaramos listas, tuplas, matrices y diccionarios que se usan en el programa.
+# Tupla de los meses del año.
+tuplaMeses=('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre')
+#Las categorías deberían ser guardadas en un archivo para no perder las nuevas o las modificaciones que se hacen
+categorias=['Alimentación', 'Alquiler', 'Entretenimiento', 'Transporte', 'Estudios', 'Salud','Servicios']
+#Pre cargo una lista de gastos para las prueabas
+matrizGastos=[[1, (2024, 3, 23), 200.45, 'Salud',True], [2, (2024, 3, 23), 120.0, 'Alquiler',True], [3, (2024, 3, 23), 100.5, 'Salud',True], [4, (2024, 3, 23), 715.55, 'Servicios',True], [5, (2024, 4, 23), 715.55, 'Servicios',True], [6, (2024, 9, 23), 715.55, 'Estudios',True]]
+diccionarioGastos = {}
+descripcionCategorias={
+    'Alimentación':'Gastos relacionados a la alimentación como supermercado, almacen, verdulería.', 
+    'Alquiler':'Gastos de alquiler o renta del lugar de vivir o para automotores, depósitos, etc...', 
+    'Entretenimiento':'Gastos de diversión como por ejemplo cine, teatro, vacaciones.', 
+    'Transporte':'Viaticos relacionados a la movilidad regular del mes como son la Sube, larga distancia, tren, etc...', 
+    'Estudios':'Los gastos de estudios como son la universidad, cursos, talleres.', 
+    'Salud':'Gastos de la medicina o relacionados como son los medicamentos.',
+    'Servicios':'Los gastos fijos inherentes a la vivienda, cochera, depósito.'
+    }
 
 def cargarMenuJson():
     f = open('menu.json', 'r', encoding='utf-8')
@@ -20,7 +39,7 @@ def cargarMenuJson():
 
 
 def menuDicc(menu):
-    os.system('clear')
+    #os.system('clear')
     for k,v in menu.items():
         #print(type(menu[k]), menu[k] )
         if type(menu[k]) == dict:
@@ -38,12 +57,14 @@ def subMenuDicc(menu, opcion):
         print(f'{opcion}: {menu[opcion]}')
 
 def runFuncion(menu, opcion):
-    if opcion % 9 == 0:
+    if opcion % 10 == 9:
         print('Volver al menú anterior')
-        menuDicc()
+        menuDicc(menu)
         print('   -----------------------   ')
     elif opcion == 1:
         print('Cargar nuevo gasto')
+        f.cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos)
+        menuDicc(menu)
     elif opcion == 2:
         print('Ver gastos')
     elif opcion == 3:
@@ -54,8 +75,10 @@ def runFuncion(menu, opcion):
         print('Editar gasto')
     elif opcion == 21:
         print('Total gastos por categorias')
+        f.totalGastosPorCategoria(matrizGastos)
     elif opcion == 22:
         print('Gastos por mes')
+        
     elif opcion == 23:
         print('Gastos por mes por categoría')
     elif opcion == 24:
@@ -81,6 +104,7 @@ def runFuncion(menu, opcion):
         menuDicc(menu)
         print('   -----------------------   ')
 
+''' 
 # MAIN
 menu = cargarMenuJson()
 opcion = 0
@@ -94,3 +118,4 @@ while opcion!=9:
     else:
         runFuncion(menu, opcion)
     print()
+''' 
