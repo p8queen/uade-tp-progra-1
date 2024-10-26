@@ -31,6 +31,7 @@ def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses,
     matrizGastos.append(gastoNuevo)
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
 
+# Menu opciones de consulta de gastos 20 al 29
 def totalGastosPorCategoria(matrizGastos):
     totalPorCategoria={}
     for gasto in matrizGastos:
@@ -44,6 +45,23 @@ def totalGastosPorCategoria(matrizGastos):
     for categoria, impTotal in totalPorCategoria.items():
         print(f'{categoria}: $ {impTotal}.')
         
+def totalGastosPorMes(diccionarioGastos, tuplaMeses):
+    for mes in diccionarioGastos:
+        total = 0
+        for categoria in diccionarioGastos[mes]:
+            total += sum(diccionarioGastos[mes][categoria])
+        print(f'{mes}: ${total}')
+
+def mostrarGastosPorMes(diccionarioGastos, mes):
+    print(f'Gastos de {mes}:')
+    try:
+        for categoria in diccionarioGastos[mes]:
+            total = sum(diccionarioGastos[mes][categoria])
+            print(f'\t{categoria}: ${total}')
+    except KeyError:
+        print(f'\tNo hay gastos de {mes}.')
+# FIN - Menu opciones de consulta de gastos 20 al 29
+
 ''' 
 def consultarGastos(matrizGastos, categorias, tuplaMeses,descripcionCategorias,diccionarioGastos):
     menuConsultarGastos ()

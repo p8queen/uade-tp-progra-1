@@ -65,10 +65,9 @@ def runFuncion(menu, opcion):
         print('Cargar nuevo gasto')
         f.cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos)
         menuDicc(menu)
-    elif opcion == 2:
-        print('Ver gastos')
     elif opcion == 3:
         print('Ver lista de categorías')
+        menuDicc(menu)
     elif opcion == 4:
         print('Editar lista de categorías')
     elif opcion == 5:
@@ -78,9 +77,13 @@ def runFuncion(menu, opcion):
         f.totalGastosPorCategoria(matrizGastos)
     elif opcion == 22:
         print('Gastos por mes')
-        
+        f.totalGastosPorMes(diccionarioGastos, tuplaMeses)
     elif opcion == 23:
         print('Gastos por mes por categoría')
+        mes=input('Ingrese el mes en LETRAS a consultar: ')
+        f.mostrarGastosPorMes(diccionarioGastos, mes)
+        subMenuDicc(menu, 2) # Menu gastos
+        print()
     elif opcion == 24:
         print('Gastos por ID')
     elif opcion == 25:
