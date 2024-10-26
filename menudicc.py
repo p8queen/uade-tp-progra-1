@@ -86,12 +86,35 @@ def runFuncion(menu, opcion):
         print()
     elif opcion == 24:
         print('Gastos por ID')
+        print()
+        id=int(input('Ingrese el ID que quiere buscar:'))
+        f.buscarGastoPorId(matrizGastos, id)
+        subMenuDicc(menu, 2) # Menu gastos
+        print()
     elif opcion == 25:
         print('Gastos por fecha')
+        print()
+        fecha=input('Ingrese la fecha a buscar con el formato: YYYY-MM-DD')
+        # fecha a tupla
+        fecha = fecha.split('-')
+        fecha = tuple(map(int, fecha))
+        f.buscarGastoPorFecha(matrizGastos, fecha)
+        subMenuDicc(menu, 2) # Menu gastos
+        print()
     elif opcion == 26:
         print('Gastos por rango de importe')
+        print()
+        minimo=int(input('Ingrese el mínimo importe del rango:'))
+        maximo=int(input('Ingrese el máximo importe del rango:'))
+        f.buscarGastosPorRangoImporte(matrizGastos, minimo, maximo)
+        subMenuDicc(menu, 2) # Menu gastos
+        print()
     elif opcion == 27:
         print('Gastos por Categoria')
+        print()
+        f.buscarGastoPorCategoria(matrizGastos, categorias, descripcionCategorias)
+        subMenuDicc(menu, 2) # Menu gastos
+        print()
     elif opcion == 31:
         clave = list(menu[3].keys())[0]
         valor = str(opcion%10)
@@ -107,18 +130,3 @@ def runFuncion(menu, opcion):
         menuDicc(menu)
         print('   -----------------------   ')
 
-''' 
-# MAIN
-menu = cargarMenuJson()
-opcion = 0
-menuDicc(menu)
-print('   -----------------------   ')
-
-while opcion!=9:
-    opcion= int(input('Ingrese la opción deseada: '))
-    if opcion < 10:
-        subMenuDicc(menu, opcion)
-    else:
-        runFuncion(menu, opcion)
-    print()
-''' 
