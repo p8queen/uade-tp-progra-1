@@ -28,9 +28,8 @@ def cargarMenuJson():
     menu = {
     1: 'Cargar nuevo gasto',
     2: {'Ver gastos': submenu['gastosOpciones']},
-    3: {'Ver lista de categorías': submenu['descripcionCategorias']},
-    4: {'Editar lista de categorías': submenu['categoriasOpciones']},
-    5: {'Editar gasto': submenu['editarGastoOpciones']},
+    3: {'Ver/Editar lista de categorías': submenu['categoriasOpciones']},
+    4: {'Editar gasto': submenu['editarGastoOpciones']},
     9: 'Salir'
     }
     
@@ -64,7 +63,8 @@ def runFuncion(menu, opcion):
     elif opcion == 1:
         print('Cargar nuevo gasto')
         f.cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos)
-        menuDicc(menu)
+        subMenuDicc(menu, 3) # Menu gastos
+        print()
     elif opcion == 3:
         print('Ver lista de categorías')
         menuDicc(menu)
@@ -116,10 +116,12 @@ def runFuncion(menu, opcion):
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 31:
-        clave = list(menu[3].keys())[0]
-        valor = str(opcion%10)
-        # Ver lista de categorías
-        print(f'Lista categoría, ', menu[3][clave][valor])
+        print(f'Lista categorías')
+        print()
+        f.listaDeCategorias(categorias, descripcionCategorias)
+        print()
+        subMenuDicc(menu, 3) # Menu gastos
+        print()
     elif opcion == 32:
         print('Eliminar categoría')
     elif opcion == 51:
