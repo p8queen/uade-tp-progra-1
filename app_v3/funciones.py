@@ -168,48 +168,28 @@ def obtenerCategoriasEnUso(matrizGastos):
 
 # FIN - Menu opciones de consulta de categorías 30 al 39
 
-''' 
-def consultarGastos(matrizGastos, categorias, tuplaMeses,descripcionCategorias,diccionarioGastos):
-    menuConsultarGastos ()
-        opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
-        while opcion!=9:
-            if opcion==1:
-                totalGastosPorCategoria(matrizGastos)
-                menuConsultarGastos ()
-                opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
-            elif opcion==2:
-                totalGastosPorMes(diccionarioGastos,tuplaMeses)
-                menuConsultarGastos ()
-                opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
-            elif opcion==3:
-                mes=input('Ingrese el mes en LETRAS a consultar: ')
-                mostrarGastosPorMes(diccionarioGastos, mes)
-                menuConsultarGastos ()
-                opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
-            elif opcion==4:
-                id=int(input('Ingrese el ID que quiere buscar:'))
-                buscarGastoPorId(matrizGastos, id)
-                menuConsultarGastos ()
-                opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
-            elif opcion==5:
-                fecha=input('Ingrese la fecha a buscar con el formato: YYYY-MM-DD')
-                buscarGastoPorFecha(matrizGastos, fecha)
-                menuConsultarGastos ()
-                opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
-            elif opcion==6:
-                minimo=int(input('Ingrese el mínimo importe del rango:'))
-                maximo=int(input('Ingrese el máximo importe del rango:'))
-                buscarGastosPorRangoImporte(matrizGastos, minimo, maximo)
-                menuConsultarGastos ()
-                opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
-            elif opcion==7:
-                buscarGastoPorCategoria(matrizGastos, categorias, descripcionCategorias)
-                menuConsultarGastos ()
-                opcion=int(input('Ingrese la opción de consulta de gastos que quiera usar:'))
-            elif opcion==9:
-                return 0
-            else:
-                print('La opción ingresada no es válida.\nIngrese nuevamente.') 
-                opcion=int(input('Ingrese la opción deseada: '))
+# Menu opciones  gastos 40 al 49
+def buscarGastoPorId(matrizGastos, id): 
+    for gasto in matrizGastos:
+        if gasto[0] == id: 
+            print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gasto[4]}')  
 
-'''        
+def eliminarGastoId(matrizGastos, id, tuplaMeses, diccionarioGastos):
+    buscarGastoPorId(matrizGastos, id)
+    respuesta = input('¿Desea eliminar el gasto? (s/n): ')
+    if respuesta.lower() == 'n':
+        print('Operación cancelada.')
+        return
+    
+    encontrado = False
+    i=0
+    while i < len(matrizGastos) and not encontrado:
+        if matrizGastos[i][0] == id:
+            matrizGastos[i][4] = False
+            encontrado = True
+        i += 1
+    crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
+    print('Gasto eliminado.')
+    buscarGastoPorId(matrizGastos, id)
+
+# FIN - Menu opciones  gastos 40 al 49

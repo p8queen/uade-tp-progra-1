@@ -157,9 +157,13 @@ def runFuncion(menu, opcion):
         lista = f.obtenerCategoriasEnUso(matrizGastos)
         for e in lista:
             print(f'{e}', end=' ')
-    elif opcion == 51:
-        print('Editar gasto')
-
+    elif opcion == 41:
+        print('Elimiar gasto por ID')
+        id = int(input('Ingrese el ID del gasto a eliminar: '))
+        f.eliminarGastoId(matrizGastos, id, tuplaMeses, diccionarioGastos)
+        print()
+        subMenuDicc(menu, 4)
+        print()
     else:
         print('Opcion No encontrada')
         menuDicc(menu)
