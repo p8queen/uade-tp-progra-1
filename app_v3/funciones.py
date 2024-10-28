@@ -147,6 +147,22 @@ def eliminarCategoria(descripcionCategorias, categoria):
     except KeyError:
         print(f'La categoría {categoria} no existe.')
 
+def editarCategoria(descripcionCategorias, categoria):
+    try:
+        nuevaDescripcion=input(f'Ingrese la nueva descripción para la categoría {categoria}: ')
+        descripcionCategorias[categoria]=nuevaDescripcion
+        print(f'La categoría {categoria} ha sido actualizada.')
+        guardarCategorias('categorias.json', descripcionCategorias)
+    except KeyError:
+        print(f'La categoría {categoria} no existe.')
+
+def obtenerCategoriasEnUso(matrizGastos):
+    categoriasEnUso = []
+    for gasto in matrizGastos:
+        if gasto[4]:
+            categoriasEnUso.append(gasto[3])
+    return set(categoriasEnUso)
+
 # escribir en el archivo de categorias
 
 

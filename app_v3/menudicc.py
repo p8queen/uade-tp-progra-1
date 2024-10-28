@@ -141,7 +141,22 @@ def runFuncion(menu, opcion):
         print()
         subMenuDicc(menu, 3)
         print()
-        
+    elif opcion == 34:    
+        print('Editar una categoría')
+        print('Nombre de categoria en letras, respetar mayusculas. ')
+        categoria = input('Ingrese la categoría a editar: ')
+        f.editarCategoria(descripcionCategorias, categoria)
+        print()
+        f.listaDeCategorias(descripcionCategorias)
+        print()
+        subMenuDicc(menu, 3)
+        print()
+    elif opcion == 35:
+        print('Ver lista de categorías con gastos')
+        print()
+        lista = f.obtenerCategoriasEnUso(matrizGastos)
+        for e in lista:
+            print(f'{e}', end=' ')
     elif opcion == 51:
         print('Editar gasto')
 
