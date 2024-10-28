@@ -10,7 +10,7 @@ categorias=['Alimentación', 'Alquiler', 'Entretenimiento', 'Transporte', 'Estud
 #Pre cargo una lista de gastos para las prueabas
 matrizGastos=[[1, (2024, 3, 23), 200.45, 'Salud',True], [2, (2024, 3, 23), 120.0, 'Alquiler',True], [3, (2024, 3, 23), 100.5, 'Salud',True], [4, (2024, 3, 23), 715.55, 'Servicios',True], [5, (2024, 4, 23), 715.55, 'Servicios',True], [6, (2024, 9, 23), 715.55, 'Estudios',True]]
 diccionarioGastos = {}
-descripcionCategorias={
+'''descripcionCategorias={
     'Alimentación':'Gastos relacionados a la alimentación como supermercado, almacen, verdulería.', 
     'Alquiler':'Gastos de alquiler o renta del lugar de vivir o para automotores, depósitos, etc...', 
     'Entretenimiento':'Gastos de diversión como por ejemplo cine, teatro, vacaciones.', 
@@ -18,7 +18,8 @@ descripcionCategorias={
     'Estudios':'Los gastos de estudios como son la universidad, cursos, talleres.', 
     'Salud':'Gastos de la medicina o relacionados como son los medicamentos.',
     'Servicios':'Los gastos fijos inherentes a la vivienda, cochera, depósito.'
-    }
+    }'''
+descripcionCategorias = f.cargarCategorias('categorias.json')
 
 def cargarMenuJson():
     f = open('menu.json', 'r', encoding='utf-8')
@@ -116,14 +117,31 @@ def runFuncion(menu, opcion):
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 31:
-        print(f'Lista categorías')
+        print(f'Ver Lista categorías')
         print()
-        f.listaDeCategorias(categorias, descripcionCategorias)
+        f.listaDeCategorias(descripcionCategorias)
         print()
         subMenuDicc(menu, 3) # Menu gastos
         print()
     elif opcion == 32:
-        print('Eliminar categoría')
+        print('Crear nueva categoría')
+        f.nuevaCategoria(descripcionCategorias)
+        print()
+        f.listaDeCategorias(descripcionCategorias)
+        print()
+        subMenuDicc(menu, 3) # Menu gastos
+        print()
+    elif opcion == 33:
+        print('Eliminar una categoría')
+        print('Nombre de categoria en letras, respetar mayusculas. ')
+        categoria = input('Ingrese la categoría a eliminar: ')
+        f.eliminarCategoria(descripcionCategorias, categoria)
+        print()
+        f.listaDeCategorias(descripcionCategorias)
+        print()
+        subMenuDicc(menu, 3)
+        print()
+        
     elif opcion == 51:
         print('Editar gasto')
 

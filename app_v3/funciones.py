@@ -1,4 +1,15 @@
+import json 
 
+def cargarCategorias(archivo):
+    try:
+        f = open(archivo, 'r', encoding='utf-8')
+        descripcionCategorias = json.load(f)
+        f.close()
+        return descripcionCategorias
+    except FileNotFoundError:
+        print('No se encontró el archivo de categorías.')
+        return {}
+    
 def crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos):
     for gasto in matrizGastos:
         mes = tuplaMeses[gasto[1][1] - 1]
@@ -10,10 +21,10 @@ def crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos):
             diccionarioGastos[mes][categoria] = []
         diccionarioGastos[mes][categoria].append(importe)
 
-def listaDeCategorias(categorias, descripcionCategorias):
+def listaDeCategorias(descripcionCategorias):
     print('\nCategorias: \n')
     i=0
-    for categoria in categorias:
+    for categoria in descripcionCategorias:
         i+=1
         print(f'{i} - {categoria} : {descripcionCategorias[categoria]}')
 
@@ -105,6 +116,41 @@ def buscarGastoPorCategoria(matrizGastos, categorias,descripcionCategorias):
             j+=1
 
 # FIN - Menu opciones de consulta de gastos 20 al 29
+
+# Menu opciones de consulta de categorías 30 al 39
+
+def guardarCategorias(archivo, descripcionCategorias):
+    try:
+        f = open(archivo, 'w', encoding='utf-8')
+        # escribir en formato json 
+        json.dump(descripcionCategorias, f, indent=4)
+        f.close()
+        print('Categorías actualizadas en el archivo.')
+    except FileNotFoundError:
+        print('No se encontró el archivo de categorías.')
+    
+
+def nuevaCategoria(descripcionCategorias):
+    nuevaCategoria=input('\nIngrese el nombre de la nueva Categoría: ')
+    if nuevaCategoria in descripcionCategorias:
+        print(f'La categoría {nuevaCategoria} ya existe.')
+    else:
+        descripcionCategorias[nuevaCategoria]=input(f'\nAgregar nueva descripción para la categoría {nuevaCategoria}: ')
+        print(f'La nueva categoría {nuevaCategoria} ha sido agregada .')
+        guardarCategorias('categorias.json', descripcionCategorias)
+
+def eliminarCategoria(descripcionCategorias, categoria):
+    try:
+        del descripcionCategorias[categoria]
+        print(f'La categoría {categoria} ha sido eliminada.')
+        guardarCategorias('categorias.json', descripcionCategorias)
+    except KeyError:
+        print(f'La categoría {categoria} no existe.')
+
+# escribir en el archivo de categorias
+
+
+# FIN - Menu opciones de consulta de categorías 30 al 39
 
 ''' 
 def consultarGastos(matrizGastos, categorias, tuplaMeses,descripcionCategorias,diccionarioGastos):

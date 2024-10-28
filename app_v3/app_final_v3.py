@@ -3,6 +3,7 @@ import funciones as f
 
 # MAIN
 f.crearDiccionarioId(md.tuplaMeses, md.matrizGastos, md.diccionarioGastos)
+
 menu = md.cargarMenuJson()
 opcion = 0
 md.menuDicc(menu)

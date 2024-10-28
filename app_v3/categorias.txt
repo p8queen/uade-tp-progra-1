@@ -1,0 +1,8 @@
+Alimentación - Gastos relacionados a la alimentación como supermercado, almacen, verdulería.
+Alquiler - Gastos de alquiler o renta del lugar de vivir o para automotores, depósitos, etc...
+Entretenimiento - Gastos de diversión como por ejemplo cine, teatro, vacaciones.
+Transporte - Viaticos relacionados a la movilidad regular del mes como son la Sube, larga distancia, tren, etc...
+Estudios - Los gastos de estudios como son la universidad, cursos, talleres.
+Salud - Gastos de la medicina o relacionados como son los medicamentos.
+Servicios - Los gastos fijos inherentes a la vivienda, cochera, depósito.
+Otros - Gastos sin categoria definida
