@@ -171,6 +171,18 @@ def runFuncion(menu, opcion):
         print()
         subMenuDicc(menu, 4)
         print()
+    elif opcion == 43:
+        print('eliminar gasto por fecha')
+        f.eliminarGastoPorFecha(matrizGastos, tuplaMeses, diccionarioGastos)
+        print()
+        subMenuDicc(menu, 4)
+        print()
+    elif opcion == 44:
+        print('Editar gasto por fecha')
+        f.editarGastoPorFecha(matrizGastos, descripcionCategorias, tuplaMeses, diccionarioGastos)
+        print()
+        subMenuDicc(menu, 4)
+        print()
     else:
         print('Opcion No encontrada')
         menuDicc(menu)

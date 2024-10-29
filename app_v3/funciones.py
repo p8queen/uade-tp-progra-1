@@ -226,6 +226,53 @@ def editarGastoId(matrizGastos, id, descripcionCategorias, tuplaMeses, diccionar
                 break          
     else:
         queEdita=int(input('Opción ingresada es inválida. Ingrese nuevamente: (0 para salir)'))
+    buscarGastoPorId(matrizGastos, id)
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
+
+def obtenerGastosPorFecha(matrizGastos):
+    gastosPorFecha=[]
+    fechaEliminar=input('\nIngrese la fecha del gasto a eliminar: Formato YYYY-MM-DD')
+    # fecha a tupla
+    fecha = fechaEliminar.split('-')
+    fecha = tuple(map(int, fecha))
+    for gasto in matrizGastos:
+        if gasto[1]==fecha:
+            gastosPorFecha.append(gasto)
+    return gastosPorFecha
+
+def eliminarGastoPorFecha(matrizGastos, tuplaMeses, diccionarioGastos):
+    gastosPorFecha=obtenerGastosPorFecha(matrizGastos)
+    
+    if not gastosPorFecha:
+        print('\nNo hay gastos para la fecha seleccionada.')
+    else:
+        print('Los gastos que coinciden con la fecha son:')
+        for gasto in gastosPorFecha:
+            print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gasto[4]}')
+        
+        print('se solicitará confirmar la eliminación del gasto con el ID correspondiente.')
+        numEliminar=int(input('Ingrese el ID del gasto a eliminar: \n'))
+        while numEliminar not in [gasto[0] for gasto in gastosPorFecha]:
+            print('El ID ingresado no corresponde a un gasto de la fecha indicada.')
+            numEliminar=int(input('Ingrese el ID del gasto a eliminar: \n'))
+    
+        eliminarGastoId(matrizGastos, numEliminar, tuplaMeses, diccionarioGastos)
+
+def editarGastoPorFecha(matrizGastos, descripcionCategorias, tuplaMeses, diccionarioGastos):
+    gastosPorFecha=obtenerGastosPorFecha(matrizGastos)
+    if not gastosPorFecha:
+        print('\nNo hay gastos para la fecha seleccionada.')
+    else:
+        print('Los gastos que coinciden con la fecha son:')
+        for gasto in gastosPorFecha:
+            print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gasto[4]}')
+        
+        numEditar=int(input('Ingrese el ID del gasto a editar: \n'))
+        while numEditar not in [gasto[0] for gasto in gastosPorFecha]:
+            print('El ID ingresado no corresponde a un gasto de la fecha indicada.')
+            numEditar=int(input('Ingrese el ID del gasto a editar: \n'))
+        editarGastoId(matrizGastos, numEditar, descripcionCategorias, tuplaMeses, diccionarioGastos)       
+
+
 
 # FIN - Menu opciones  gastos 40 al 49
