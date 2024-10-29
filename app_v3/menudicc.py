@@ -164,6 +164,13 @@ def runFuncion(menu, opcion):
         print()
         subMenuDicc(menu, 4)
         print()
+    elif opcion == 42:
+        print('Editar gasto por ID')
+        id = int(input('Ingrese el ID del gasto a editar: '))
+        f.editarGastoId(matrizGastos, id, descripcionCategorias, tuplaMeses, diccionarioGastos)
+        print()
+        subMenuDicc(menu, 4)
+        print()
     else:
         print('Opcion No encontrada')
         menuDicc(menu)

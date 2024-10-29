@@ -303,7 +303,10 @@ def editarGastos(matrizGastos):
             opcion=int(input('Ingrese la opción deseada: '))            
 
 def editarGastoId(matrizGastos, id, descripcionCategorias):
-    queEdita=int(input('\n ¿Qué desea editar?\n1 - Fecha\n2 - Monto\n3 - Categoría\nIngrese la opcion: '))
+    queEdita=int(input('\n ¿Qué desea editar?\n1 - Fecha\n2 - Monto\n3 - Categoría\n4 - Cancelar\n Ingrese la opcion: '))
+    if queEdita==4:
+        print('Operación cancelada.')
+        return
     if queEdita==1:
         for gasto in matrizGastos:
             if gasto[0]==id:

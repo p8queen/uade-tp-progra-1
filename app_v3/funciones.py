@@ -27,10 +27,10 @@ def listaDeCategorias(descripcionCategorias):
     for categoria in descripcionCategorias:
         i+=1
         print(f'{i} - {categoria} : {descripcionCategorias[categoria]}')
-
+    
 def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos):
     print('\nPara cargar un gasto debe completar Fecha (YYYY-MM-DD), Monto del gasto y Categoría.\nLas categorías posibles son:\n')
-    listaDeCategorias(categorias,descripcionCategorias)
+    listaDeCategorias(descripcionCategorias)
     id=matrizGastos[-1][0]+1
     fechaGasto=input('Fecha en formato YYYY-MM-DD: ')
     # fecha a tupla
@@ -191,5 +191,41 @@ def eliminarGastoId(matrizGastos, id, tuplaMeses, diccionarioGastos):
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
     print('Gasto eliminado.')
     buscarGastoPorId(matrizGastos, id)
+
+def editarGastoId(matrizGastos, id, descripcionCategorias, tuplaMeses, diccionarioGastos):
+    print('Gasto a editar:')
+    buscarGastoPorId(matrizGastos, id)
+    queEdita=int(input('\n ¿Qué desea editar?\n1 - Fecha\n2 - Monto\n3 - Categoría\n4 - Deshacer Gasto Borrado \n0 - Cancelar. Volver al menu\n Ingrese la opcion: '))
+    if queEdita==0:
+        print('Operación cancelada.')
+        return
+    if queEdita==1:
+        for gasto in matrizGastos:
+            if gasto[0]==id:
+               gasto[1]=input('Ingrese Nueva fecha con formato YYYY-MM-DD: ')
+    elif queEdita==2:
+        for gasto in matrizGastos:
+            if gasto[0]==id:
+               gasto[2]=input('Ingrese Nuevo monto: ')
+    elif queEdita==3:
+        for gasto in matrizGastos:
+            if gasto[0]==id:
+                listaDeCategorias(descripcionCategorias)
+                nuevaCategoria=input('Ingrese en letras, respetando mayusculas algunas de las categoría : ')
+                noEncontrado=True
+                while noEncontrado:
+                    if nuevaCategoria in descripcionCategorias:
+                        gasto[3]=nuevaCategoria
+                        noEncontrado=False
+                    if noEncontrado:
+                        nuevaCategoria=input('Categoría no encontrada. Ingrese nuevamente: ')
+    elif queEdita==4:
+        for gasto in matrizGastos:
+            if gasto[0]==id:
+                gasto[4]=True
+                break          
+    else:
+        queEdita=int(input('Opción ingresada es inválida. Ingrese nuevamente: (0 para salir)'))
+    crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
 
 # FIN - Menu opciones  gastos 40 al 49
