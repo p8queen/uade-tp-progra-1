@@ -1,13 +1,24 @@
 import json 
 
+def escribirErrores(archivo, errorMensaje):
+    try:
+        f = open(archivo, 'a', encoding='utf-8')
+        f.write(f'{errorMensaje}\n')
+        f.close()
+        print('Errores guardados en el archivo.')
+    except FileNotFoundError:
+        print('No se encontró el archivo de errores.')
+
 def cargarCategorias(archivo):
     try:
         f = open(archivo, 'r', encoding='utf-8')
         descripcionCategorias = json.load(f)
         f.close()
         return descripcionCategorias
-    except FileNotFoundError:
-        print('No se encontró el archivo de categorías.')
+    except FileNotFoundError as e:
+        cadena = f'No se encontró el archivo cargarCategorias. Error: {e}'
+        print(cadena)
+        escribirErrores('error.log', cadena)
         return {}
     
 def crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos):
@@ -27,7 +38,8 @@ def listaDeCategorias(descripcionCategorias):
     for categoria in descripcionCategorias:
         i+=1
         print(f'{i} - {categoria} : {descripcionCategorias[categoria]}')
-    
+
+# Menu opciones  1    
 def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos):
     print('\nPara cargar un gasto debe completar Fecha (YYYY-MM-DD), Monto del gasto y Categoría.\nLas categorías posibles son:\n')
     listaDeCategorias(descripcionCategorias)
@@ -101,7 +113,7 @@ def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
 
 def buscarGastoPorCategoria(matrizGastos, categorias,descripcionCategorias):
     gastosPorCategoria=[]
-    listaDeCategorias(categorias,descripcionCategorias)
+    listaDeCategorias(descripcionCategorias)
     buscarCategoria=int(input('Ingrese el número de la categoría a buscar: '))
     for gasto in matrizGastos:
         if gasto[3]==categorias[buscarCategoria-1]:
@@ -126,8 +138,10 @@ def guardarCategorias(archivo, descripcionCategorias):
         json.dump(descripcionCategorias, f, indent=4)
         f.close()
         print('Categorías actualizadas en el archivo.')
-    except FileNotFoundError:
-        print('No se encontró el archivo de categorías.')
+    except FileNotFoundError as e:
+        cadena = f'No se encontró el archivo guardarCategorias. Error: {e}'
+        print(cadena)
+        escribirErrores('error.log', cadena)
     
 
 def nuevaCategoria(descripcionCategorias):
