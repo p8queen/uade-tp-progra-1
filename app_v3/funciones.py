@@ -1,5 +1,40 @@
 import json 
 
+def cargarMatriz(archivo):
+    matriz = []
+    try:
+        with open(archivo, encoding='utf-8') as f:
+            for line in f:
+                fila = line.strip().split(';')
+                id = int(fila[0])
+                # fila[1] es de la forma '(YYYY, MM, DD)'
+                listaFecha = fila[1].strip('() ').split(',')
+                fecha = tuple(map(int, listaFecha))
+                importe = float(fila[2])
+                activo = bool(fila[4])
+                matriz.append([id, fecha, importe, fila[3], activo])
+                
+        return matriz
+    except FileNotFoundError as e:
+        cadena = f'No se encontró el archivo para cargar la matriz. Error: {e}'
+        print(cadena)
+        print('Se cargará una matriz de ejemplo.')
+        escribirErrores('error.log', cadena)
+        matrizGastos=[[1, (2024, 3, 23), 200.45, 'Salud',True], [2, (2024, 3, 23), 120.0, 'Alquiler',True], [3, (2024, 3, 23), 100.5, 'Salud',True], [4, (2024, 3, 23), 715.55, 'Servicios',True], [5, (2024, 4, 23), 715.55, 'Servicios',True], [6, (2024, 9, 23), 715.55, 'Estudios',True]]
+        return matrizGastos
+    
+def escribirMatriz(archivo, matriz):
+    try:
+        f = open(archivo, 'w', encoding='utf-8')
+        for fila in matriz:
+            f.write(f'{fila[0]};{fila[1]};{fila[2]};{fila[3]};{fila[4]}\n')
+        f.close()
+        print('Matriz Gastos guardada en el archivo.')
+    except FileNotFoundError as e:
+        cadena = f'No se encontró el archivo para guardar la matriz. Error: {e}'
+        print(cadena)
+        escribirErrores('error.log', cadena)
+
 def escribirErrores(archivo, errorMensaje):
     try:
         f = open(archivo, 'a', encoding='utf-8')
@@ -52,6 +87,7 @@ def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses,
     categoriaGasto=int(input('De la lista de categorias indique el número de la misma para seleccionarla: '))
     gastoNuevo=[id,fechaGasto,importeGasto,categorias[categoriaGasto-1], True]
     matrizGastos.append(gastoNuevo)
+    escribirMatriz('matrizGastos.csv', matrizGastos)
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
 
 # Menu opciones de consulta de gastos 20 al 29
