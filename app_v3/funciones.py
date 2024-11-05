@@ -233,11 +233,12 @@ def obtenerCategoriasEnUso(matrizGastos):
 # Menu opciones  gastos 40 al 49
 def buscarGastoPorId(matrizGastos, id): 
     for gasto in matrizGastos:
-        if gasto[0] == id: 
-            print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gasto[4]}')  
+        if gasto[0] == id:
+            cadena = f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gasto[4]}' 
+            return cadena
 
 def eliminarGastoId(matrizGastos, id, tuplaMeses, diccionarioGastos):
-    buscarGastoPorId(matrizGastos, id)
+    print('Gasto a eliminar:', buscarGastoPorId(matrizGastos, id))
     respuesta = input('¿Desea eliminar el gasto? (s/n): ')
     if respuesta.lower() == 'n':
         print('Operación cancelada.')
@@ -256,7 +257,7 @@ def eliminarGastoId(matrizGastos, id, tuplaMeses, diccionarioGastos):
 
 def editarGastoId(matrizGastos, id, descripcionCategorias, tuplaMeses, diccionarioGastos):
     print('Gasto a editar:')
-    buscarGastoPorId(matrizGastos, id)
+    print(buscarGastoPorId(matrizGastos, id))
     queEdita=int(input('\n ¿Qué desea editar?\n1 - Fecha\n2 - Monto\n3 - Categoría\n4 - Deshacer Gasto Borrado \n0 - Cancelar. Volver al menu\n Ingrese la opcion: '))
     if queEdita==0:
         print('Operación cancelada.')
@@ -288,7 +289,7 @@ def editarGastoId(matrizGastos, id, descripcionCategorias, tuplaMeses, diccionar
                 break          
     else:
         queEdita=int(input('Opción ingresada es inválida. Ingrese nuevamente: (0 para salir)'))
-    buscarGastoPorId(matrizGastos, id)
+    print(buscarGastoPorId(matrizGastos, id))
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
 
 def obtenerGastosPorFecha(matrizGastos):
