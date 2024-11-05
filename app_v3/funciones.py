@@ -106,12 +106,14 @@ def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses,
 def totalGastosPorCategoria(matrizGastos):
     totalPorCategoria={}
     for gasto in matrizGastos:
-        imp=gasto[2]
-        cat=gasto[3]
-        if cat in totalPorCategoria:
-            totalPorCategoria[cat]+=imp
-        else:
-            totalPorCategoria[cat]=imp
+        # gasto[4] es el campo activo. False indica eliminado
+        if gasto[4]:
+            importe=gasto[2]
+            categoria=gasto[3]
+            if categoria in totalPorCategoria:
+                totalPorCategoria[categoria]+=importe
+            else:
+                totalPorCategoria[categoria]=importe
     print(f'Los gastos por categoría son: \n')
     for categoria, impTotal in totalPorCategoria.items():
         print(f'{categoria}: $ {impTotal}.')
