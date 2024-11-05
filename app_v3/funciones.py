@@ -1,4 +1,5 @@
 import json 
+import re
 
 def cargarMatriz(archivo):
     matriz = []
@@ -75,18 +76,29 @@ def listaDeCategorias(descripcionCategorias):
         print(f'{i} - {categoria} : {descripcionCategorias[categoria]}')
 
 # Menu opciones  1    
+
+def cargarFechaGasto():
+    fechaGasto=input('Fecha en formato YYYY-MM-DD: ')
+    patron = r'^\d{4}-\d{2}-\d{2}$'
+    while not re.match(patron, fechaGasto):
+        print('Formato de fecha incorrecto. Intente nuevamente.')
+        fechaGasto=input('Fecha en formato YYYY-MM-DD: ')
+    # fecha a tupla
+    fechaGasto = fechaGasto.split('-')
+    fechaGasto = tuple(map(int, fechaGasto))
+    return fechaGasto
+
 def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos):
     print('\nPara cargar un gasto debe completar Fecha (YYYY-MM-DD), Monto del gasto y Categoría.\nLas categorías posibles son:\n')
     listaDeCategorias(descripcionCategorias)
     id=matrizGastos[-1][0]+1
-    fechaGasto=input('Fecha en formato YYYY-MM-DD: ')
-    # fecha a tupla
-    fechaGasto = fechaGasto.split('-')
-    fechaGasto = tuple(map(int, fechaGasto))
+    fechaGasto=cargarFechaGasto()
     importeGasto=float(input('Importe del gasto: '))
     categoriaGasto=int(input('De la lista de categorias indique el número de la misma para seleccionarla: '))
     gastoNuevo=[id,fechaGasto,importeGasto,categorias[categoriaGasto-1], True]
     matrizGastos.append(gastoNuevo)
+    print(f'Gasto {id} cargado.')
+    print(buscarGastoPorId(matrizGastos, id))
     escribirMatriz('matrizGastos.csv', matrizGastos)
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
 
