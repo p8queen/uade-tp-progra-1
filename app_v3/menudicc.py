@@ -27,6 +27,7 @@ def cargarMenuJson():
     f.close()
     
     menu = {
+    0: 'Mostrar Menú Completo', 
     1: 'Cargar nuevo gasto',
     2: {'Ver gastos': submenu['gastosOpciones']},
     3: {'Ver/Editar lista de categorías': submenu['categoriasOpciones']},
@@ -36,7 +37,15 @@ def cargarMenuJson():
     
     return menu
 
-
+def imprimirMenu(menu, nivel=0):
+    for opcion, detalles in menu.items():
+        if type(detalles) == dict:
+            # Si es un submenú, se imprime el nombre de la opción y se llama a la función recursivamente
+            if nivel == 0:
+                print(str(opcion) + " - " + list(detalles.keys())[0])
+            imprimirMenu(detalles, nivel + 1)
+        else:
+            print("\t" * nivel + str(opcion) + " - " + detalles)
 
 def menuDicc(menu):
     #os.system('clear')
@@ -61,6 +70,10 @@ def runFuncion(menu, opcion):
         print('Volver al menú anterior')
         menuDicc(menu)
         print('   -----------------------   ')
+    elif opcion == 0:
+        print('Menu Completo')
+        imprimirMenu(menu)
+        print()
     elif opcion == 1:
         print('Cargar nuevo gasto')
         f.cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos)
