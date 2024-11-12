@@ -76,7 +76,9 @@ def runFuncion(menu, opcion):
         print()
     elif opcion == 1:
         print('Cargar nuevo gasto')
-        f.cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos)
+        op=False
+        while not op:
+            op=f.cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos)
         subMenuDicc(menu, 3) # Menu gastos
         print()
     elif opcion == 3:

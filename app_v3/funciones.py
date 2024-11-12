@@ -24,7 +24,12 @@ def cargarMatriz(archivo):
         escribirErrores('error.log', cadena)
         matrizGastos=[[1, (2024, 3, 23), 200.45, 'Salud',True], [2, (2024, 3, 23), 120.0, 'Alquiler',True], [3, (2024, 3, 23), 100.5, 'Salud',True], [4, (2024, 3, 23), 715.55, 'Servicios',True], [5, (2024, 4, 23), 715.55, 'Servicios',True], [6, (2024, 9, 23), 715.55, 'Estudios',True]]
         return matrizGastos
-    
+    except IndexError as e2:
+        cadena = f'Archivo contiene fechas fuera de la Tupla Meses y no se puede cargar la matriz. Error: {e2}'
+        print(cadena)
+        escribirErrores('error.log', cadena)
+        exit(1)
+
 def escribirMatriz(archivo, matriz):
     try:
         f = open(archivo, 'w', encoding='utf-8')
@@ -60,15 +65,29 @@ def cargarCategorias(archivo):
         return {}
     
 def crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos):
-    for gasto in matrizGastos:
-        mes = tuplaMeses[gasto[1][1] - 1]
-        categoria = gasto[3]
-        importe = gasto[2]
-        if mes not in diccionarioGastos:
-            diccionarioGastos[mes] = {}
-        if categoria not in diccionarioGastos[mes]:
-            diccionarioGastos[mes][categoria] = []
-        diccionarioGastos[mes][categoria].append(importe)
+    try:
+        for gasto in matrizGastos:
+            mes = tuplaMeses[gasto[1][1] - 1]
+            categoria = gasto[3]
+            importe = gasto[2]
+            if mes not in diccionarioGastos:
+                diccionarioGastos[mes] = {}
+            if categoria not in diccionarioGastos[mes]:
+                diccionarioGastos[mes][categoria] = []
+                diccionarioGastos[mes][categoria].append(importe)
+    except IndexError as e:
+        cadena = f'Archivo contiene fechas fuera de la Tupla Meses y no se puede cargar la matriz. Error: {e}'
+        print(cadena)
+        escribirErrores('error.log', cadena)
+        print ('Archivo origen de datos corrupto, no se puede continuar.\nContactar al administrador del sistema.')
+        exit(1)
+    except TypeError as e2:
+        cadena = f'Fecha ingresada no es válida. Error: {e2}'
+        print(cadena)
+        escribirErrores('error.log', cadena)
+        return False
+
+
 
 def listaDeCategorias(descripcionCategorias):
     print('\nCategorias: \n')
@@ -81,7 +100,7 @@ def listaDeCategorias(descripcionCategorias):
 
 def cargarFechaGasto():
     fechaGasto=input('Fecha en formato YYYY-MM-DD: ')
-    patron = r'^\d{4}-\d{2}-\d{2}$'
+    patron = r'^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$'
     while not re.match(patron, fechaGasto):
         print('Formato de fecha incorrecto. Intente nuevamente.')
         fechaGasto=input('Fecha en formato YYYY-MM-DD: ')
@@ -97,12 +116,20 @@ def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses,
     fechaGasto=cargarFechaGasto()
     importeGasto=float(input('Importe del gasto: '))
     categoriaGasto=int(input('De la lista de categorias indique el número de la misma para seleccionarla: '))
-    gastoNuevo=[id,fechaGasto,importeGasto,categorias[categoriaGasto-1], True]
+    try:
+        gastoNuevo=[id,fechaGasto,importeGasto,categorias[categoriaGasto-1], True]
+    except IndexError as e:
+        cadena=f'Categoría ingresada fuera de la lista de opciones {e}'
+        print(cadena)
+        escribirErrores('error.log',cadena)
+        print('Intente nuevamente.\n')
+        return False
     matrizGastos.append(gastoNuevo)
     print(f'Gasto {id} cargado.')
-    print(buscarGastoPorId(matrizGastos, id))
+    buscarGastoPorId(matrizGastos, id)
     escribirMatriz('matrizGastos.csv', matrizGastos)
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
+    return True    
 
 # Menu opciones de consulta de gastos 20 al 29
 def totalGastosPorCategoria(matrizGastos):
@@ -266,7 +293,9 @@ def editarGastoId(matrizGastos, id, descripcionCategorias, tuplaMeses, diccionar
     if queEdita==1:
         for gasto in matrizGastos:
             if gasto[0]==id:
-               gasto[1]=input('Ingrese Nueva fecha con formato YYYY-MM-DD: ')
+               fechaEdit=cargarFechaGasto()
+               gasto[1]=fechaEdit
+
     elif queEdita==2:
         for gasto in matrizGastos:
             if gasto[0]==id:
@@ -290,7 +319,7 @@ def editarGastoId(matrizGastos, id, descripcionCategorias, tuplaMeses, diccionar
                 break          
     else:
         queEdita=int(input('Opción ingresada es inválida. Ingrese nuevamente: (0 para salir)'))
-    print(buscarGastoPorId(matrizGastos, id))
+    buscarGastoPorId(matrizGastos, id)
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
 
 def obtenerGastosPorFecha(matrizGastos):
