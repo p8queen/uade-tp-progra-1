@@ -99,8 +99,7 @@ def runFuncion(menu, opcion):
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 24:
-        print('Gastos por ID')
-        print()
+        print('Gastos por ID\n')
         id=int(input('Ingrese el ID que quiere buscar:'))
         f.buscarGastoPorId(matrizGastos, id)
         subMenuDicc(menu, 2) # Menu gastos

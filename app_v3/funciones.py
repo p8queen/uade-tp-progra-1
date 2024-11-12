@@ -134,11 +134,14 @@ def mostrarGastosPorMes(diccionarioGastos, mes):
     except KeyError:
         print(f'\tNo hay gastos de {mes}.')
 
-def buscarGastoPorId(matrizGastos, id): 
+def buscarGastoPorId(matrizGastos, id):
     for gasto in matrizGastos:
         if gasto[0] == id: 
-            print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]}')  
+            cadena = f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gasto[4]}' 
+            print (cadena)
+    return cadena
 
+            
 def buscarGastoPorFecha(matrizGastos, fecha):
     gastosPorFecha=[]
     for gasto in matrizGastos:
@@ -232,13 +235,6 @@ def obtenerCategoriasEnUso(matrizGastos):
 
 # FIN - Menu opciones de consulta de categorías 30 al 39
 
-# Menu opciones  gastos 40 al 49
-def buscarGastoPorId(matrizGastos, id): 
-    for gasto in matrizGastos:
-        if gasto[0] == id:
-            cadena = f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gasto[4]}' 
-            return cadena
-
 def eliminarGastoId(matrizGastos, id, tuplaMeses, diccionarioGastos):
     print('Gasto a eliminar:', buscarGastoPorId(matrizGastos, id))
     respuesta = input('¿Desea eliminar el gasto? (s/n): ')
@@ -255,6 +251,7 @@ def eliminarGastoId(matrizGastos, id, tuplaMeses, diccionarioGastos):
         i += 1
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
     print('Gasto eliminado.')
+    escribirMatriz('matrizGastos.csv', matrizGastos)
     buscarGastoPorId(matrizGastos, id)
 
 def editarGastoId(matrizGastos, id, descripcionCategorias, tuplaMeses, diccionarioGastos):
