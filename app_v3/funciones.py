@@ -305,6 +305,14 @@ def obtenerGastosPorFecha(matrizGastos):
             gastosPorFecha.append(gasto)
     return gastosPorFecha
 
+def gastosEliminados(matrizGasto):
+    gastosEliminados = []
+    for gasto in matrizGasto:
+        if not gasto[4]:
+            gastosEliminados.append(gasto)
+    for gasto in gastosEliminados:
+        print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]}')S
+
 def eliminarGastoPorFecha(matrizGastos, tuplaMeses, diccionarioGastos):
     gastosPorFecha=obtenerGastosPorFecha(matrizGastos)
     
