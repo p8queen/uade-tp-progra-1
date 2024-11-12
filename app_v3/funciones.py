@@ -1,5 +1,6 @@
 import json 
 import re
+import datetime
 
 def cargarMatriz(archivo):
     matriz = []
@@ -39,7 +40,8 @@ def escribirMatriz(archivo, matriz):
 def escribirErrores(archivo, errorMensaje):
     try:
         f = open(archivo, 'a', encoding='utf-8')
-        f.write(f'{errorMensaje}\n')
+        fechaLog=datetime.datetime.now()
+        f.write(f'{fechaLog} - {errorMensaje}\n')
         f.close()
         print('Errores guardados en el archivo.')
     except FileNotFoundError:
