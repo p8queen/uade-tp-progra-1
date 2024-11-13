@@ -10,10 +10,15 @@ md.menuDicc(menu)
 print('   -----------------------   ')
 
 while opcion!=9:
-    opcion= int(input('Ingrese la opción deseada: '))
-    if opcion > 1 and opcion < 10:
-        md.subMenuDicc(menu, opcion)
-    else:
-        md.runFuncion(menu, opcion)
-    print()
+    try:
+        opcion= int(input('Ingrese la opción deseada:'))
+        if opcion > 1 and opcion < 10:
+            md.subMenuDicc(menu, opcion)
+        else:
+            md.runFuncion(menu, opcion)
+        print()
+    except ValueError as e:
+        cadena = f'Ingresada opción inválida no INT. Error: {e}'
+        print(cadena)
+        f.escribirErrores('error.log', cadena)
 

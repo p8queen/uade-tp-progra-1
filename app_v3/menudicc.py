@@ -163,6 +163,9 @@ def runFuncion(menu, opcion):
         print('Editar una categoría')
         print('Nombre de categoria en letras, respetar mayusculas. ')
         categoria = input('Ingrese la categoría a editar: ')
+        while categoria not in f.obtenerCategorias():
+            print('Categoria a Editar no encontrada')
+            categoria = input('Ingrese la categoría a editar de nuevo: ')
         f.editarCategoria(descripcionCategorias, categoria)
         print()
         f.listaDeCategorias(descripcionCategorias)
@@ -175,6 +178,9 @@ def runFuncion(menu, opcion):
         lista = f.obtenerCategoriasEnUso(matrizGastos)
         for e in lista:
             print(f'{e}', end=' ')
+        subMenuDicc(menu, 3)
+        print ()
+
     elif opcion == 41:
         print('Elimiar gasto por ID')
         id = int(input('Ingrese el ID del gasto a eliminar: '))

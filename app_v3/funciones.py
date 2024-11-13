@@ -243,11 +243,24 @@ def eliminarCategoria(descripcionCategorias, categoria):
     except KeyError:
         print(f'La categoría {categoria} no existe.')
 
+def obtenerCategorias():
+    try:
+        f = open('categorias.json', 'r', encoding='utf-8') 
+        descripcionCategorias=json.load(f)
+        f.close()
+        return list(descripcionCategorias.keys())
+    except FileNotFoundError as e:
+        cadena = f'No se encontró el archivo guardarCategorias. Error: {e}'
+        print(cadena)
+        escribirErrores('error.log', cadena)
+        return []
+
 def editarCategoria(descripcionCategorias, categoria):
     try:
         nuevaDescripcion=input(f'Ingrese la nueva descripción para la categoría {categoria}: ')
         descripcionCategorias[categoria]=nuevaDescripcion
         print(f'La categoría {categoria} ha sido actualizada.')
+
         guardarCategorias('categorias.json', descripcionCategorias)
     except KeyError:
         print(f'La categoría {categoria} no existe.')
