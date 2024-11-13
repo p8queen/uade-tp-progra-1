@@ -164,10 +164,12 @@ def mostrarGastosPorMes(diccionarioGastos, mes):
         print(f'\tNo hay gastos de {mes}.')
 
 def buscarGastoPorId(matrizGastos, id):
+    cadena = 'Id Gastado no encontrado'
     for gasto in matrizGastos:
         if gasto[0] == id: 
             cadena = f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gasto[4]}' 
             print (cadena)
+            break
     return cadena
 
             
