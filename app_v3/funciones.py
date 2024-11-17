@@ -5,17 +5,17 @@ import datetime
 def cargarMatriz(archivo):
     matriz = []
     try:
-        with open(archivo, encoding='utf-8') as f:
-            for line in f:
-                fila = line.strip().split(';')
-                id = int(fila[0])
-                # fila[1] es de la forma '(YYYY, MM, DD)'
-                listaFecha = fila[1].strip('() ').split(',')
-                fecha = tuple(map(int, listaFecha))
-                importe = float(fila[2])
-                activo = bool(fila[4])
-                matriz.append([id, fecha, importe, fila[3], activo])
-                
+        f = open(archivo, encoding='utf-8')
+        for line in f:
+            fila = line.strip().split(';')
+            id = int(fila[0])
+            # fila[1] es de la forma '(YYYY, MM, DD)'
+            listaFecha = fila[1].strip('() ').split(',')
+            fecha = tuple(map(int, listaFecha))
+            importe = float(fila[2])
+            activo = bool(fila[4])
+            matriz.append([id, fecha, importe, fila[3], activo])
+        f.close()        
         return matriz
     except FileNotFoundError as e:
         cadena = f'No se encontró el archivo para cargar la matriz. Error: {e}'

@@ -17,15 +17,16 @@ def validarOpcion():
         else:
             md.runFuncion(menu, opcion)
         print()
-        return True
+        return True, opcion
     except ValueError as e:
         cadena = f'Ingresada opción inválida no INT. Error: {e}'
         print(cadena)
         f.escribirErrores('error.log', cadena)
-        return False
+        return False, opcion
 
-opcionValida = False    
+opcionValida = True 
 while opcion!=9 or not opcionValida:
-    opcionValida = validarOpcion()
+    # True/False, numero -> False or 9 para salir
+    opcionValida, opcion = validarOpcion()
     
 
