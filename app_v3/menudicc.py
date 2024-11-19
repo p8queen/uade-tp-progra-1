@@ -102,7 +102,7 @@ def runFuncion(menu, opcion):
         print()
     elif opcion == 23:
         print('Gastos por mes por categoría')
-        mes=input('Ingrese el mes en LETRAS a consultar: ')
+        mes=input('Ingrese el mes en LETRAS a consultar: ').lower()
         f.mostrarGastosPorMes(diccionarioGastos, mes)
         print('2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
