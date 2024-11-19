@@ -57,13 +57,20 @@ def menuDicc(menu):
         else:
             print(f'{k}: {v}')
 
-def subMenuDicc(menu, opcion): 
-    if type(menu[opcion]) == dict:
-        key = list(menu[opcion])[0]
-        for k,v in menu[opcion][key].items():
-            print(f'{opcion}{k}: {v}')   
-    else:
-        print(f'{opcion}: {menu[opcion]}')
+def subMenuDicc(menu, opcion):
+    try: 
+        if type(menu[opcion]) == dict:
+            key = list(menu[opcion])[0]
+            for k,v in menu[opcion][key].items():
+                print(f'{opcion}{k}: {v}')   
+        else:
+            print(f'{opcion}: {menu[opcion]}')
+    except KeyError as e:
+        print(f'Error en la opción: {e}')
+        print('Volver al menú anterior')
+        menuDicc(menu)
+        print('   -----------------------   ')
+        f.escribirErrores('error.log', f'subMenuDicc funcion: Error en la opción: {e}')
 
 def runFuncion(menu, opcion):
     if opcion % 10 == 9:
