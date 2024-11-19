@@ -66,7 +66,8 @@ def cargarCategorias(archivo):
     
 def crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos):
     try:
-        for gasto in matrizGastos:
+        gastosActivos = filter(lambda gasto: gasto[4], matrizGastos)
+        for gasto in gastosActivos:
             mes = tuplaMeses[gasto[1][1] - 1]
             categoria = gasto[3]
             importe = gasto[2]
