@@ -146,6 +146,7 @@ def totalGastosPorCategoria(matrizGastos):
     print(f'Los gastos por categoría son: \n')
     for categoria, impTotal in totalPorCategoria.items():
         print(f'{categoria}: $ {impTotal}.')
+    print()
         
 def totalGastosPorMes(diccionarioGastos, tuplaMeses):
     for mes in diccionarioGastos:
