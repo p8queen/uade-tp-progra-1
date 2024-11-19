@@ -4,3 +4,5 @@ test.py
 *.ipynb
 .vscode
 APP.py
+app_v3/error.log
+borrador-gustavo.ipynb
