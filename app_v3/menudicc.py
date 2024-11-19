@@ -91,9 +91,13 @@ def runFuncion(menu, opcion):
     elif opcion == 21:
         print('Total gastos por categorias')
         f.totalGastosPorCategoria(matrizGastos)
+        subMenuDicc(menu, 2) # Menu gastos
+        print()
     elif opcion == 22:
         print('Gastos por mes')
         f.totalGastosPorMes(diccionarioGastos, tuplaMeses)
+        subMenuDicc(menu, 2) # Menu gastos
+        print()
     elif opcion == 23:
         print('Gastos por mes por categoría')
         mes=input('Ingrese el mes en LETRAS a consultar: ')
@@ -134,6 +138,8 @@ def runFuncion(menu, opcion):
         print('Gastos eliminados')
         print()
         f.gastosEliminados(matrizGastos)
+        subMenuDicc(menu, 2) # Menu gastos
+        print()
     elif opcion == 31:
         print(f'Ver Lista categorías')
         print()
