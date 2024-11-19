@@ -5,7 +5,7 @@ import datetime
 def cargarMatriz(archivo):
     matriz = []
     try:
-        f = open(archivo, encoding='utf-8')
+        f = open(archivo, 'r', encoding='utf-8')
         for line in f:
             fila = line.strip().split(';')
             id = int(fila[0])
@@ -13,7 +13,7 @@ def cargarMatriz(archivo):
             listaFecha = fila[1].strip('() ').split(',')
             fecha = tuple(map(int, listaFecha))
             importe = float(fila[2])
-            activo = bool(fila[4])
+            activo = eval(fila[4]) #bool siempre devuelve True si el valor es distinto de ""
             matriz.append([id, fecha, importe, fila[3], activo])
         f.close()        
         return matriz
