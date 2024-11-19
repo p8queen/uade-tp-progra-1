@@ -19,3 +19,5 @@ No se encontró el archivo para cargar la matriz. Error: [Errno 2] No such file 
 2024-11-18 23:14:18.813034 - Ingresada opción inválida no INT. Error: invalid literal for int() with base 10: '2024-03-23'
 2024-11-18 23:19:45.116817 - Ingresada opción inválida no INT. Error: invalid literal for int() with base 10: '2024-10-24'
 2024-11-19 12:02:49.489083 - subMenuDicc funcion: Error en la opción: 8
+2024-11-19 14:22:01.397561 - Categoría ingresada fuera de la lista de opciones list index out of range
+2024-11-19 14:22:22.714295 - Categoría ingresada fuera de la lista de opciones list index out of range

@@ -6,7 +6,7 @@ import funciones as f
 # Tupla de los meses del año.
 tuplaMeses=('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre')
 #Las categorías deberían ser guardadas en un archivo para no perder las nuevas o las modificaciones que se hacen
-categorias=['Alimentación', 'Alquiler', 'Entretenimiento', 'Transporte', 'Estudios', 'Salud','Servicios']
+#categorias=['Alimentación', 'Alquiler', 'Entretenimiento', 'Transporte', 'Estudios', 'Salud','Servicios']
 #Pre cargo una lista de gastos para las prueabas
 matrizGastos=f.cargarMatriz('matrizGastos.csv')
 diccionarioGastos = {}
@@ -85,7 +85,7 @@ def runFuncion(menu, opcion):
         print('Cargar nuevo gasto')
         op=False
         while not op:
-            op=f.cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos)
+            op=f.cargarNuevoGasto(matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos)
         menuDicc(menu) # Vuelve a menú completo
         print()
     elif opcion == 3:

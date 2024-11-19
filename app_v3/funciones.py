@@ -110,13 +110,14 @@ def cargarFechaGasto():
     fechaGasto = tuple(map(int, fechaGasto))
     return fechaGasto
 
-def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos):
+def cargarNuevoGasto(matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos):
     print('\nPara cargar un gasto debe completar Fecha (YYYY-MM-DD), Monto del gasto y Categoría.\nLas categorías posibles son:\n')
     listaDeCategorias(descripcionCategorias)
     id=matrizGastos[-1][0]+1
     fechaGasto=cargarFechaGasto()
     importeGasto=float(input('Importe del gasto: '))
     categoriaGasto=int(input('De la lista de categorias indique el número de la misma para seleccionarla: '))
+    categorias = list(descripcionCategorias.keys())
     try:
         gastoNuevo=[id,fechaGasto,importeGasto,categorias[categoriaGasto-1], True]
     except IndexError as e:
