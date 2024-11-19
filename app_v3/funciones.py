@@ -134,18 +134,19 @@ def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses,
 # Menu opciones de consulta de gastos 20 al 29
 def totalGastosPorCategoria(matrizGastos):
     totalPorCategoria={}
+    redondeo2 = lambda importe: round(importe, 2)
     for gasto in matrizGastos:
         # gasto[4] es el campo activo. False indica eliminado
         if gasto[4]:
             importe=gasto[2]
             categoria=gasto[3]
             if categoria in totalPorCategoria:
-                totalPorCategoria[categoria]+=importe
+                totalPorCategoria[categoria]=redondeo2(totalPorCategoria[categoria] + importe)
             else:
-                totalPorCategoria[categoria]=importe
+                totalPorCategoria[categoria]=redondeo2(importe)
     print(f'Los gastos por categoría son: \n')
     for categoria, impTotal in totalPorCategoria.items():
-        print(f'{categoria}: $ {impTotal}.')
+        print(f'{categoria}: $ {impTotal}')
     print()
         
 def totalGastosPorMes(diccionarioGastos, tuplaMeses):
