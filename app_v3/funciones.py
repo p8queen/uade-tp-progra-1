@@ -197,10 +197,11 @@ def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
     for gasto in gastos:
         print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]}') 
 
-def buscarGastoPorCategoria(matrizGastos, categorias,descripcionCategorias):
+def buscarGastoPorCategoria(matrizGastos,descripcionCategorias):
     gastosPorCategoria=[]
     listaDeCategorias(descripcionCategorias)
     buscarCategoria=int(input('Ingrese el número de la categoría a buscar: '))
+    categorias=list(descripcionCategorias.keys())
     for gasto in matrizGastos:
         if gasto[3]==categorias[buscarCategoria-1]:
             gastosPorCategoria.append(gasto)
@@ -210,7 +211,7 @@ def buscarGastoPorCategoria(matrizGastos, categorias,descripcionCategorias):
         print(f'Los gastos que coinciden con {categorias[buscarCategoria-1]} son:\n')
         j=0
         for gasto in gastosPorCategoria:
-            print(f'ID: {gastosPorCategoria[j][0]} - Fecha: {gastosPorCategoria[j][1]} - Importe: ${gastosPorCategoria[j][2]} - Categoria:: {gastosPorCategoria[j][3]}')
+            print(f'ID: {gastosPorCategoria[j][0]} - Fecha: {gastosPorCategoria[j][1]} - Importe: ${gastosPorCategoria[j][2]} - Categoria: {gastosPorCategoria[j][3]}\n')
             j+=1
 
 # FIN - Menu opciones de consulta de gastos 20 al 29

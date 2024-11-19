@@ -144,7 +144,7 @@ def runFuncion(menu, opcion):
     elif opcion == 27:
         print('Gastos por Categoria')
         print()
-        f.buscarGastoPorCategoria(matrizGastos, categorias, descripcionCategorias)
+        f.buscarGastoPorCategoria(matrizGastos, descripcionCategorias)
         print('2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
