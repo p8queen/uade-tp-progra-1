@@ -91,23 +91,27 @@ def runFuncion(menu, opcion):
     elif opcion == 21:
         print('Total gastos por categorias')
         f.totalGastosPorCategoria(matrizGastos)
+        print('2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 22:
         print('Gastos por mes')
         f.totalGastosPorMes(diccionarioGastos, tuplaMeses)
+        print('2 - Ver gastos')        
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 23:
         print('Gastos por mes por categoría')
         mes=input('Ingrese el mes en LETRAS a consultar: ')
         f.mostrarGastosPorMes(diccionarioGastos, mes)
+        print('2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 24:
         print('Gastos por ID\n')
         id=int(input('Ingrese el ID que quiere buscar:'))
         f.buscarGastoPorId(matrizGastos, id)
+        print('2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 25:
@@ -118,6 +122,7 @@ def runFuncion(menu, opcion):
         fecha = fecha.split('-')
         fecha = tuple(map(int, fecha))
         f.buscarGastoPorFecha(matrizGastos, fecha)
+        print('2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 26:
@@ -126,25 +131,28 @@ def runFuncion(menu, opcion):
         minimo=int(input('Ingrese el mínimo importe del rango:'))
         maximo=int(input('Ingrese el máximo importe del rango:'))
         f.buscarGastosPorRangoImporte(matrizGastos, minimo, maximo)
+        print('2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 27:
         print('Gastos por Categoria')
         print()
         f.buscarGastoPorCategoria(matrizGastos, categorias, descripcionCategorias)
+        print('2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 28:
         print('Gastos eliminados')
         print()
         f.gastosEliminados(matrizGastos)
+        print('2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 31:
         print(f'Ver Lista categorías')
         print()
         f.listaDeCategorias(descripcionCategorias)
-        print()
+        print('\n3 - Ver/Editar lista de categorías')
         subMenuDicc(menu, 3) # Menu gastos
         print()
     elif opcion == 32:
@@ -152,7 +160,7 @@ def runFuncion(menu, opcion):
         f.nuevaCategoria(descripcionCategorias)
         print()
         f.listaDeCategorias(descripcionCategorias)
-        print()
+        print('\n3 - Ver/Editar lista de categorías')
         subMenuDicc(menu, 3) # Menu gastos
         print()
     elif opcion == 33:
@@ -162,7 +170,7 @@ def runFuncion(menu, opcion):
         f.eliminarCategoria(descripcionCategorias, categoria)
         print()
         f.listaDeCategorias(descripcionCategorias)
-        print()
+        print('\n3 - Ver/Editar lista de categorías')
         subMenuDicc(menu, 3)
         print()
     elif opcion == 34:    
@@ -175,7 +183,7 @@ def runFuncion(menu, opcion):
         f.editarCategoria(descripcionCategorias, categoria)
         print()
         f.listaDeCategorias(descripcionCategorias)
-        print()
+        print('\n3 - Ver/Editar lista de categorías')
         subMenuDicc(menu, 3)
         print()
     elif opcion == 35:
@@ -184,6 +192,7 @@ def runFuncion(menu, opcion):
         lista = f.obtenerCategoriasEnUso(matrizGastos)
         for e in lista:
             print(f'{e}', end=' ')
+        print('\n3 - Ver/Editar lista de categorías')
         subMenuDicc(menu, 3)
         print ()
 
@@ -191,26 +200,26 @@ def runFuncion(menu, opcion):
         print('Elimiar gasto por ID')
         id = int(input('Ingrese el ID del gasto a eliminar: '))
         f.eliminarGastoId(matrizGastos, id, tuplaMeses, diccionarioGastos)
-        print()
+        print('\n4 - Editar gasto')
         subMenuDicc(menu, 4)
         print()
     elif opcion == 42:
         print('Editar gasto por ID')
         id = int(input('Ingrese el ID del gasto a editar: '))
         f.editarGastoId(matrizGastos, id, descripcionCategorias, tuplaMeses, diccionarioGastos)
-        print()
+        print('\n4 - Editar gasto')
         subMenuDicc(menu, 4)
         print()
     elif opcion == 43:
         print('eliminar gasto por fecha')
         f.eliminarGastoPorFecha(matrizGastos, tuplaMeses, diccionarioGastos)
-        print()
+        print('\n4 - Editar gasto')
         subMenuDicc(menu, 4)
         print()
     elif opcion == 44:
         print('Editar gasto por fecha')
         f.editarGastoPorFecha(matrizGastos, descripcionCategorias, tuplaMeses, diccionarioGastos)
-        print()
+        print('\n4 - Editar gasto')
         subMenuDicc(menu, 4)
         print()
     else:
