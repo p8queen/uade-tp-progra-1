@@ -36,7 +36,7 @@ def escribirMatriz(archivo, matriz):
         for fila in matriz:
             f.write(f'{fila[0]};{fila[1]};{fila[2]};{fila[3]};{fila[4]}\n')
         f.close()
-        print('Matriz Gastos guardada en el archivo.')
+        print('Matriz Gastos guardada en el archivo.\n')
     except FileNotFoundError as e:
         cadena = f'No se encontró el archivo para guardar la matriz. Error: {e}'
         print(cadena)
@@ -125,7 +125,7 @@ def cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses,
         print('Intente nuevamente.\n')
         return False
     matrizGastos.append(gastoNuevo)
-    print(f'Gasto {id} cargado.')
+    print(f'\nGasto {id} cargado.\n')
     buscarGastoPorId(matrizGastos, id)
     escribirMatriz('matrizGastos.csv', matrizGastos)
     crearDiccionarioId(tuplaMeses, matrizGastos, diccionarioGastos)
@@ -168,7 +168,7 @@ def buscarGastoPorId(matrizGastos, id):
     for gasto in matrizGastos:
         if gasto[0] == id: 
             cadena = f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gasto[4]}' 
-            print (cadena)
+            print (f'{cadena}\n')
             break
     return cadena
 

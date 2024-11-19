@@ -79,7 +79,7 @@ def runFuncion(menu, opcion):
         op=False
         while not op:
             op=f.cargarNuevoGasto(categorias, matrizGastos,descripcionCategorias, tuplaMeses, diccionarioGastos)
-        subMenuDicc(menu, 3) # Menu gastos
+        menuDicc(menu) # Vuelve a menú completo
         print()
     elif opcion == 3:
         print('Ver lista de categorías')
