@@ -177,9 +177,7 @@ def buscarGastoPorId(matrizGastos, id):
             
 def buscarGastoPorFecha(matrizGastos, fecha):
     gastosPorFecha=[]
-    for gasto in matrizGastos:
-        if gasto[1]==fecha:
-            gastosPorFecha.append(gasto)
+    gastosPorFecha = [gasto for gasto in matrizGastos if gasto[1] == fecha]
     if gastosPorFecha==[]:
         print(f'\nNo hay gastos para la fecha {fecha}')
     else:
@@ -345,9 +343,7 @@ def obtenerGastosPorFecha(matrizGastos):
     # fecha a tupla
     fecha = fechaEliminar.split('-')
     fecha = tuple(map(int, fecha))
-    for gasto in matrizGastos:
-        if gasto[1]==fecha:
-            gastosPorFecha.append(gasto)
+    gastosPorFecha = [gasto for gasto in matrizGastos if gasto[1] == fecha]
     return gastosPorFecha
 
 def gastosEliminados(matrizGasto):

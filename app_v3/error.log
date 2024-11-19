@@ -16,3 +16,5 @@ No se encontró el archivo para cargar la matriz. Error: [Errno 2] No such file 
 2024-11-12 23:23:30.998933 - Ingresada opción inválida no INT. Error: invalid literal for int() with base 10: 'fdcd'
 2024-11-12 23:24:49.914768 - Ingresada opción inválida no INT. Error: invalid literal for int() with base 10: 'rete'
 2024-11-18 22:07:35.594321 - Ingresada opción inválida no INT. Error: could not convert string to float: '879,9'
+2024-11-18 23:14:18.813034 - Ingresada opción inválida no INT. Error: invalid literal for int() with base 10: '2024-03-23'
+2024-11-18 23:19:45.116817 - Ingresada opción inválida no INT. Error: invalid literal for int() with base 10: '2024-10-24'
