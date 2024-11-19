@@ -1,5 +1,4 @@
 import json
-import os
 import funciones as f
 
 # Declaramos listas, tuplas, matrices y diccionarios que se usan en el programa.
@@ -48,7 +47,6 @@ def imprimirMenu(menu, nivel=0):
             print("\t" * nivel + str(opcion) + " - " + detalles)
 
 def menuDicc(menu):
-    #os.system('clear')
     for k,v in menu.items():
         #print(type(menu[k]), menu[k] )
         if type(menu[k]) == dict:
