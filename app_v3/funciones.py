@@ -270,9 +270,9 @@ def editarCategoria(descripcionCategorias, categoria):
 
 def obtenerCategoriasEnUso(matrizGastos):
     categoriasEnUso = []
-    for gasto in matrizGastos:
-        if gasto[4]:
-            categoriasEnUso.append(gasto[3])
+    gastosActivos = filter(lambda gasto: gasto[4], matrizGastos)
+    for gasto in gastosActivos:
+        categoriasEnUso.append(gasto[3])
     return set(categoriasEnUso)
 
 # escribir en el archivo de categorias
