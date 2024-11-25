@@ -101,7 +101,7 @@ def runFuncion(menu, opcion):
         print()
     elif opcion == 22:
         print('Gastos por mes')
-        f.totalGastosPorMes(diccionarioGastos, tuplaMeses)
+        f.totalGastosPorMes(diccionarioGastos)
         print('2 - Ver gastos')        
         subMenuDicc(menu, 2) # Menu gastos
         print()

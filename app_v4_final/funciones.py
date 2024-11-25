@@ -147,16 +147,22 @@ def totalGastosPorCategoria(matrizGastos):
         else:
             totalPorCategoria[categoria]=redondeo2(importe)
     print(f'Los gastos por categoría son: \n')
+    test_total = 0
     for categoria, impTotal in totalPorCategoria.items():
         print(f'{categoria}: $ {impTotal}')
+        test_total += impTotal
     print()
+    return test_total
         
-def totalGastosPorMes(diccionarioGastos, tuplaMeses):
+def totalGastosPorMes(diccionarioGastos):
+    test_total = 0
     for mes in diccionarioGastos:
         total = 0
         for categoria in diccionarioGastos[mes]:
             total += sum(diccionarioGastos[mes][categoria])
         print(f'{mes}: ${total}')
+        test_total += total
+    return test_total
 
 def mostrarGastosPorMes(diccionarioGastos, mes):
     print(f'Gastos de {mes}:')
