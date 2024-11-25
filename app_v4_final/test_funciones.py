@@ -1,4 +1,4 @@
-from funciones import totalGastosPorMes, totalGastosPorCategoria
+from funciones import totalGastosPorMes, totalGastosPorCategoria, mostrarGastosPorMes
 
 def test_totalGastosPorMes():
     diccionarioGastos = {'Enero': {'Alquiler': [1000], 'Comida': [500], 'Ropa': [200]},
@@ -20,16 +20,12 @@ def test_totalGastosPorCategoria():
     # Assert
     assert resultado == 2010.0
 
-'''
-def test_totalGastosPorMesCategoria():
-    # Arrange
-    diccionarioGastos = {'Enero': {'Alquiler': 1000, 'Comida': 500, 'Ropa': 200},
-                         'Febrero': {'Alquiler': 1000, 'Comida': 500, 'Ropa': 200},
-                         'Marzo': {'Alquiler': 1000, 'Comida': 500, 'Ropa': 200}}
-    # Act
-    resultado = totalGastosPorMesCategoria(diccionarioGastos)
-    # Assert
-    assert resultado == {'Enero': {'Alquiler': 1000, 'Comida': 500, 'Ropa': 200},
-                         'Febrero': {'Alquiler': 1000, 'Comida': 500, 'Ropa': 200},
-                         'Marzo': {'Alquiler': 1000, 'Comida': 500, 'Ropa': 200}}
-'''
+def test_mostrarGastosPorMes():
+    diccionarioGastos = {'Enero': {'Alquiler': [1000], 'Comida': [500], 'Ropa': [200]},
+                         'Febrero': {'Alquiler': [1000], 'Comida': [500], 'Ropa': [500]},
+                         'Marzo': {'Alquiler': [1000], 'Comida': [100], 'Ropa': [200]} }
+    
+    assert mostrarGastosPorMes(diccionarioGastos, 'Enero') == 1700.0
+    assert mostrarGastosPorMes(diccionarioGastos, 'Febrero') == 2000.0
+    assert mostrarGastosPorMes(diccionarioGastos, 'Marzo') == 1300.0
+    

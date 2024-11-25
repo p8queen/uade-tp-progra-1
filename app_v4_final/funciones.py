@@ -167,9 +167,12 @@ def totalGastosPorMes(diccionarioGastos):
 def mostrarGastosPorMes(diccionarioGastos, mes):
     print(f'Gastos de {mes}:')
     try:
+        test_total = 0
         for categoria in diccionarioGastos[mes]:
             total = sum(diccionarioGastos[mes][categoria])
             print(f'\t{categoria}: ${total}')
+            test_total += total
+        return test_total
     except KeyError:
         print(f'\tNo hay gastos de {mes}.')
 
