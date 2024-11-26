@@ -37,5 +37,5 @@ def test_obtenerCategoriasEnUso():
                     [16, (2024, 10, 24), 9.25, 'Alimentación', True]]
     resultado = obtenerCategoriasEnUso(matrizGastos)
     # Assert
-    assert list(resultado) == ['Salud', 'Entretenimiento', 'Servicios', 'Alimentación']
+    assert resultado == set(['Servicios', 'Entretenimiento', 'Salud', 'Alimentación'])
     
