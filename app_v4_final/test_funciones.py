@@ -39,3 +39,5 @@ def test_obtenerCategoriasEnUso():
     # Assert
     assert resultado == set(['Servicios', 'Entretenimiento', 'Salud', 'Alimentación'])
     
+
+    
