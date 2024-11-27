@@ -359,7 +359,7 @@ def obtenerGastosPorFecha(matrizGastos):
     # fecha a tupla
     fecha = fechaEliminar.split('-')
     fecha = tuple(map(int, fecha))
-    gastosPorFecha = [gasto for gasto in matrizGastos if gasto[1] == fecha]
+    gastosPorFecha = [gasto for gasto in matrizGastos if gasto[1] == fecha and gasto[4]]
     return gastosPorFecha
 
 def gastosEliminados(matrizGasto):
@@ -372,14 +372,13 @@ def gastosEliminados(matrizGasto):
 
 def eliminarGastoPorFecha(matrizGastos, tuplaMeses, diccionarioGastos):
     gastosPorFecha=obtenerGastosPorFecha(matrizGastos)
-    
     if not gastosPorFecha:
         print('\nNo hay gastos para la fecha seleccionada.')
     else:
         print('Los gastos que coinciden con la fecha son:')
         for gasto in gastosPorFecha:
-            
-            print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gasto[4]}')
+            gastoActivo = booleanoA_siNo(gasto[4])
+            print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gastoActivo}')
         
         print('se solicitará confirmar la eliminación del gasto con el ID correspondiente.')
         numEliminar=int(input('Ingrese el ID del gasto a eliminar: \n'))
