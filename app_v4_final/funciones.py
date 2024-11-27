@@ -205,7 +205,7 @@ def buscarGastoPorFecha(matrizGastos, fecha):
 def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
     gastos = []
     for gasto in matrizGasto:
-        if gasto[2] >= minimo and gasto[2] <= maximo:
+        if gasto[2] >= minimo and gasto[2] <= maximo and gasto[4]:
             gastos.append(gasto)
     for gasto in gastos:
         print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]}') 
@@ -378,6 +378,7 @@ def eliminarGastoPorFecha(matrizGastos, tuplaMeses, diccionarioGastos):
     else:
         print('Los gastos que coinciden con la fecha son:')
         for gasto in gastosPorFecha:
+            
             print(f'ID: {gasto[0]} - Fecha: {gasto[1]} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gasto[4]}')
         
         print('se solicitará confirmar la eliminación del gasto con el ID correspondiente.')
