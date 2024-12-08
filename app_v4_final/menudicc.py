@@ -21,20 +21,26 @@ diccionarioGastos = {}
 descripcionCategorias = f.cargarCategorias('categorias.json')
 
 def cargarMenuJson():
-    f = open('menu.json', 'r', encoding='utf-8')
-    submenu = json.load(f)
-    f.close()
-    
-    menu = {
-    0: 'Mostrar Menú Completo', 
-    1: 'Cargar nuevo gasto',
-    2: {'Ver gastos': submenu['gastosOpciones']},
-    3: {'Ver/Editar lista de categorías': submenu['categoriasOpciones']},
-    4: {'Editar gasto': submenu['editarGastoOpciones']},
-    9: 'Salir'
-    }
-    
-    return menu
+    try:
+        fo = open('menu.json', 'r', encoding='utf-8')
+        submenu = json.load(fo)
+        fo.close()
+        menu = {
+        0: 'Mostrar Menú Completo', 
+        1: 'Cargar nuevo gasto',
+        2: {'Ver gastos': submenu['gastosOpciones']},
+        3: {'Ver/Editar lista de categorías': submenu['categoriasOpciones']},
+        4: {'Editar gasto': submenu['editarGastoOpciones']},
+        9: 'Salir'
+        }
+        return menu
+    except FileNotFoundError as e:
+        cadena = f'No se pudo encontrar el archivo para la carga del Menú. Error: {e}'
+        print(cadena)
+        f.escribirErrores('error.log', cadena)
+        print('No se puede continuar. Se apaga el programa. Disculpe las molestias.')
+        return -1
+
 
 def imprimirMenu(menu, nivel=0):
     for opcion, detalles in menu.items():

@@ -26,3 +26,14 @@ No se encontró el archivo para cargar la matriz. Error: [Errno 2] No such file 
 2024-11-19 16:47:18.058606 - Ingresada opción inválida no INT. Error: invalid literal for int() with base 10: ''
 2024-11-19 16:47:37.951983 - Ingresada opción inválida no INT. Error: invalid literal for int() with base 10: 'clear'
 2024-11-27 16:29:30.751107 - subMenuDicc funcion: Error en la opción: 5
+2024-12-08 20:21:06.447914 - No se pudo encontrar el archivo para la carga del Menú. Error: [Errno 2] No such file or directory: 'menu.json'
+2024-12-08 20:24:53.438028 - No se pudo encontrar el archivo para la carga del Menú. Error: [Errno 2] No such file or directory: 'menu.json'
+2024-12-08 20:26:39.717054 - No se pudo encontrar el archivo para la carga del Menú. Error: [Errno 2] No such file or directory: 'menu.json'
+2024-12-08 20:27:00.164657 - No se pudo encontrar el archivo para la carga del Menú. Error: [Errno 2] No such file or directory: 'menu.json'
+2024-12-08 20:27:13.366618 - No se pudo encontrar el archivo para la carga del Menú. Error: [Errno 2] No such file or directory: 'menu.json'
+2024-12-08 20:29:07.737317 - No se pudo encontrar el archivo para la carga del Menú. Error: [Errno 2] No such file or directory: 'menu.json'
+2024-12-08 20:31:15.101297 - No se pudo encontrar el archivo para la carga del Menú. Error: [Errno 2] No such file or directory: 'menu.json'
+2024-12-08 20:32:08.320621 - No se pudo encontrar el archivo para la carga del Menú. Error: [Errno 2] No such file or directory: 'menu.json'
+2024-12-08 20:35:09.854208 - subMenuDicc funcion: Error en la opción: 8
+2024-12-08 20:37:00.912199 - subMenuDicc funcion: Error en la opción: 8
+2024-12-08 20:44:32.547215 - Test de fun EscribirErrores

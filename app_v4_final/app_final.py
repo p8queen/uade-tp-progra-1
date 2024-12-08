@@ -4,11 +4,6 @@ import funciones as f
 # MAIN
 f.crearDiccionarioId(md.tuplaMeses, md.matrizGastos, md.diccionarioGastos)
 
-menu = md.cargarMenuJson()
-opcion = 0
-md.menuDicc(menu)
-print('   -----------------------   ')
-
 def validarOpcion():
     try:
         opcion= int(input('Ingrese la opción deseada:'))
@@ -23,10 +18,17 @@ def validarOpcion():
         print(cadena)
         f.escribirErrores('error.log', cadena)
         return False, opcion
+    
+menu = md.cargarMenuJson()
+if menu != -1:
+    opcionValida = True 
+    opcion=0
+    md.menuDicc(menu)
+    print('   -----------------------   ')
+    while opcion!=9 or not opcionValida:
+        # True/False, numero -> False or 9 para salir
+        opcionValida, opcion = validarOpcion()
 
-opcionValida = True 
-while opcion!=9 or not opcionValida:
-    # True/False, numero -> False or 9 para salir
-    opcionValida, opcion = validarOpcion()
+
     
 

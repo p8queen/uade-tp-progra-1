@@ -49,8 +49,10 @@ def escribirErrores(archivo, errorMensaje):
         f.write(f'{fechaLog} - {errorMensaje}\n')
         f.close()
         print('Errores guardados en el archivo.')
+        return True
     except FileNotFoundError:
         print('No se encontró el archivo de errores.')
+        return False
 
 def cargarCategorias(archivo):
     try:

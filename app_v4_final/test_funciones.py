@@ -1,4 +1,4 @@
-from funciones import totalGastosPorMes, totalGastosPorCategoria, mostrarGastosPorMes, obtenerCategoriasEnUso
+from funciones import totalGastosPorMes, totalGastosPorCategoria, mostrarGastosPorMes, obtenerCategoriasEnUso, escribirErrores
 
 def test_totalGastosPorMes():
     diccionarioGastos = {'Enero': {'Alquiler': [1000], 'Comida': [500], 'Ropa': [200]},
@@ -39,5 +39,9 @@ def test_obtenerCategoriasEnUso():
     # Assert
     assert resultado == set(['Servicios', 'Entretenimiento', 'Salud', 'Alimentación'])
     
-
+def test_escribirErrores():
+    cadena='Test de fun EscribirErrores'
+    resultado=escribirErrores('error.log',cadena)
+    # Assert
+    assert resultado==True
     
