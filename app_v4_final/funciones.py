@@ -186,8 +186,8 @@ def buscarGastoPorId(matrizGastos, id):
     for gasto in matrizGastos:
         if gasto[0] == id: 
             gastoActivo = booleanoA_siNo(gasto[4])
-            fecha_formateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
-            cadena = f'ID: {gasto[0]} - Fecha: {fecha_formateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - Activo: {gastoActivo}' 
+            fechaFormateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
+            cadena = f'ID: {gasto[0]} - Fecha: {fechaFormateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - Activo: {gastoActivo}' 
             print (f'{cadena}\n')
             break
     return cadena
@@ -198,11 +198,11 @@ def buscarGastoPorFecha(matrizGastos, fecha):
     if not gastosPorFecha:
         print(f'\nNo hay gastos para la fecha {fecha[0]}/{fecha[1]:02}/{fecha[2]:02}')
     else:
-        fecha_formateada = f'{fecha[0]}/{fecha[1]:02}/{fecha[2]:02}'
-        print(f'Los gastos que coinciden con {fecha_formateada} son:\n')
+        fechaFormateada = f'{fecha[0]}/{fecha[1]:02}/{fecha[2]:02}'
+        print(f'Los gastos que coinciden con {fechaFormateada} son:\n')
         for gasto in gastosPorFecha:
-            fecha_formateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
-            print(f'ID: {gasto[0]} - Fecha: {fecha_formateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]}')
+            fechaFormateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
+            print(f'ID: {gasto[0]} - Fecha: {fechaFormateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]}')
 
 
 def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
@@ -212,8 +212,8 @@ def buscarGastosPorRangoImporte(matrizGasto, minimo, maximo):
             gastos.append(gasto)
     print(f'\nLos gastos activos con valores entre ${minimo} - ${maximo} son:\n')
     for gasto in gastos:
-        fecha_formateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
-        print(f'ID: {gasto[0]} - Fecha: {fecha_formateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]}') 
+        fechaFormateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
+        print(f'ID: {gasto[0]} - Fecha: {fechaFormateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]}') 
 
 def buscarGastoPorCategoria(matrizGastos,descripcionCategorias):
     gastosPorCategoria=[]
@@ -228,8 +228,8 @@ def buscarGastoPorCategoria(matrizGastos,descripcionCategorias):
     else:
         print(f'\nLos gastos activos que coinciden con {categorias[buscarCategoria-1]} son:\n')
         for gasto in gastosPorCategoria:
-            fecha_formateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
-            print(f'ID: {gasto[0]} - Fecha: {fecha_formateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]}\n')
+            fechaFormateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
+            print(f'ID: {gasto[0]} - Fecha: {fechaFormateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]}\n')
 
 
 # FIN - Menu opciones de consulta de gastos 20 al 29
@@ -383,8 +383,8 @@ def eliminarGastoPorFecha(matrizGastos, tuplaMeses, diccionarioGastos):
         print('Los gastos que coinciden con la fecha son:\n')
         for gasto in gastosPorFecha:
             gastoActivo = booleanoA_siNo(gasto[4])
-            fecha_formateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
-            print(f'ID: {gasto[0]} - Fecha: {fecha_formateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gastoActivo}')
+            fechaFormateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
+            print(f'ID: {gasto[0]} - Fecha: {fechaFormateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gastoActivo}')
         print('se solicitará confirmar la eliminación del gasto con el ID correspondiente.\n')
         numEliminar=int(input('Ingrese el ID del gasto a eliminar: \n'))
         while numEliminar not in [gasto[0] for gasto in gastosPorFecha]:
@@ -399,9 +399,9 @@ def editarGastoPorFecha(matrizGastos, descripcionCategorias, tuplaMeses, diccion
     else:
         print('Los gastos que coinciden con la fecha son:\n')
         for gasto in gastosPorFecha:
-            fecha_formateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
+            fechaFormateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
             gastoActivo = booleanoA_siNo(gasto[4])
-            print(f'ID: {gasto[0]} - Fecha: {fecha_formateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gastoActivo}')
+            print(f'ID: {gasto[0]} - Fecha: {fechaFormateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gastoActivo}')
         numEditar=int(input('Ingrese el ID del gasto a editar: \n'))
         while numEditar not in [gasto[0] for gasto in gastosPorFecha]:
             print('El ID ingresado no corresponde a un gasto de la fecha indicada.')
