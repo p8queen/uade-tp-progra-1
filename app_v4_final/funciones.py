@@ -99,9 +99,9 @@ def listaDeCategorias(descripcionCategorias):
 
 
 def imprimirGasto(gasto):
-    fecha_formateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
+    fechaFormateada = f'{gasto[1][0]}/{gasto[1][1]:02}/{gasto[1][2]:02}'
     gastoActivo = booleanoA_siNo(gasto[4])  
-    print(f'ID: {gasto[0]} - Fecha: {fecha_formateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gastoActivo}')
+    print(f'ID: {gasto[0]} - Fecha: {fechaFormateada} - Importe: ${gasto[2]} - Categoria: {gasto[3]} - activo: {gastoActivo}')
 
 # Menu opciones  1    
 
@@ -153,32 +153,32 @@ def totalGastosPorCategoria(matrizGastos):
         else:
             totalPorCategoria[categoria]=redondeo2(importe)
     print(f'Los gastos por categoría son: \n')
-    test_total = 0
+    testTotal = 0
     for categoria, impTotal in totalPorCategoria.items():
         print(f'{categoria}: $ {impTotal}')
-        test_total += impTotal
+        testTotal += impTotal
     print()
-    return test_total
+    return testTotal
         
 def totalGastosPorMes(diccionarioGastos):
-    test_total = 0
+    testTotal = 0
     for mes in diccionarioGastos:
         total = 0
         for categoria in diccionarioGastos[mes]:
             total += sum(diccionarioGastos[mes][categoria])
         print(f'{mes}: ${total}')
-        test_total += total
-    return test_total
+        testTotal += total
+    return testTotal
 
 def mostrarGastosPorMes(diccionarioGastos, mes):
     print(f'Gastos de {mes}:')
     try:
-        test_total = 0
+        testTotal = 0
         for categoria in diccionarioGastos[mes]:
             total = sum(diccionarioGastos[mes][categoria])
             print(f'\t{categoria}: ${total}')
-            test_total += total
-        return test_total
+            testTotal += total
+        return testTotal
     except KeyError:
         print(f'\tNo hay gastos de {mes}.')
 
