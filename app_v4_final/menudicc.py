@@ -102,61 +102,61 @@ def runFuncion(menu, opcion):
     elif opcion == 21:
         print('Total gastos por categorias')
         f.totalGastosPorCategoria(matrizGastos)
-        print('2 - Ver gastos')
+        print('\n2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 22:
         print('Gastos por mes')
         f.totalGastosPorMes(diccionarioGastos)
-        print('2 - Ver gastos')        
+        print('\n2 - Ver gastos')        
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 23:
-        print('Gastos por mes por categoría')
-        mes=input('Ingrese el mes en LETRAS a consultar: ').lower()
+        print('\nGastos por mes por categoría')
+        mes=input('\nIngrese el mes en LETRAS a consultar: ').lower()
         f.mostrarGastosPorMes(diccionarioGastos, mes)
-        print('2 - Ver gastos')
+        print('\n2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 24:
-        print('Gastos por ID\n')
-        id=int(input('Ingrese el ID que quiere buscar:'))
+        print('\nGastos por ID\n')
+        id=int(input('\nIngrese el ID que quiere buscar:'))
         f.buscarGastoPorId(matrizGastos, id)
-        print('2 - Ver gastos')
+        print('\n2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 25:
-        print('Gastos por fecha')
+        print('\nGastos por fecha')
         print()
-        fecha=input('Ingrese la fecha a buscar con el formato: YYYY-MM-DD')
+        fecha=input('\nIngrese la fecha a buscar con el formato: YYYY-MM-DD')
         # fecha a tupla
         fecha = fecha.split('-')
         fecha = tuple(map(int, fecha))
         f.buscarGastoPorFecha(matrizGastos, fecha)
-        print('2 - Ver gastos')
+        print('\n2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 26:
-        print('Gastos por rango de importe')
+        print('\nGastos por rango de importe')
         print()
         minimo=int(input('Ingrese el mínimo importe del rango:'))
         maximo=int(input('Ingrese el máximo importe del rango:'))
         f.buscarGastosPorRangoImporte(matrizGastos, minimo, maximo)
-        print('2 - Ver gastos')
+        print('\n2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 27:
-        print('Gastos por Categoria')
+        print('\nGastos por Categoria')
         print()
         f.buscarGastoPorCategoria(matrizGastos, descripcionCategorias)
-        print('2 - Ver gastos')
+        print('\n2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 28:
-        print('Gastos eliminados')
+        print('\nGastos eliminados')
         print()
         f.gastosEliminados(matrizGastos)
-        print('2 - Ver gastos')
+        print('\n2 - Ver gastos')
         subMenuDicc(menu, 2) # Menu gastos
         print()
     elif opcion == 31:
@@ -167,7 +167,7 @@ def runFuncion(menu, opcion):
         subMenuDicc(menu, 3) # Menu gastos
         print()
     elif opcion == 32:
-        print('Crear nueva categoría')
+        print('\nCrear nueva categoría')
         f.nuevaCategoria(descripcionCategorias)
         print()
         f.listaDeCategorias(descripcionCategorias)

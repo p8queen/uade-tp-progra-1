@@ -37,3 +37,4 @@ No se encontró el archivo para cargar la matriz. Error: [Errno 2] No such file 
 2024-12-08 20:35:09.854208 - subMenuDicc funcion: Error en la opción: 8
 2024-12-08 20:37:00.912199 - subMenuDicc funcion: Error en la opción: 8
 2024-12-08 20:44:32.547215 - Test de fun EscribirErrores
+2024-12-10 15:24:56.708824 - Ingresada opción inválida no INT. Error: could not convert string to float: '9999,9'
